@@ -1,3 +1,4 @@
+//Global variables
 var g_nboxHeight = 80,
     g_nboxWidth = 80,
     arrBox = [],
@@ -6,6 +7,7 @@ const arrChar = ['T', 'O', 'M', 'E', 'R', 'B', 'A'];
 
 (function() {
 
+    //A memory game begins after clicking a box
     function flipBox() {
 
         if (this.style.color === 'black') {
@@ -33,6 +35,7 @@ const arrChar = ['T', 'O', 'M', 'E', 'R', 'B', 'A'];
         }
     }
 
+    // Create three boxes with random letters each pressing the button 
     function addFloatBox() {
         for (g_i = 0; g_i < 3; ++g_i, g_nboxHeight += 20, g_nboxWidth += 20) {
             const main = document.getElementsByTagName('main')[0];
@@ -53,6 +56,7 @@ const arrChar = ['T', 'O', 'M', 'E', 'R', 'B', 'A'];
             main.append(box);
         }
     }
+
     document.getElementById('button').onclick = addFloatBox;
 
 })();
