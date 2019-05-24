@@ -3,13 +3,6 @@
     padding: 0px;
 }
 
-body {
-    font-family: Helvetica;
-    font-style: normal;
-    font-weight: normal;
-    line-height: normal;
-}
-
 main,
 nav,
 article,
@@ -20,28 +13,45 @@ footer {
     display: block;
 }
 
-#page1 {
-    width: 1200px;
-    height: 700px;
-    margin: 0 auto;
-}
-
 header {
     width: 100%;
     height: 117px;
 }
 
+main {
+    width: 100%;
+}
 
-/* Style the list */
+footer {
+    width: 100%;
+    height: 90px;
+    background-color: #000000;
+    color: #62c462;
+}
+
+.clear {
+    clear: both;
+}
+
+#wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.table td,
+.table th {
+    padding: 16px;
+}
+
+
+/* ------Bredcrumb------ */
 
 ul.breadcrumb {
     padding: 10px 16px;
     list-style: none;
     background: #ffffff;
 }
-
-
-/* Display list items side by side */
 
 ul.breadcrumb li {
     font-size: 18px;
@@ -58,143 +68,138 @@ ul.breadcrumb li+li:before {
 
 .currentPage {
     color: #000000;
-    padding: 8px;
+    padding-top: 6px;
 }
-
-
-/* Add a color to all links inside the list */
 
 ul.breadcrumb li a {
     color: #000000;
     text-decoration: none;
 }
 
-
-/* Add a color on mouse-over */
-
 ul.breadcrumb li a:hover {
     color: #01447e;
     text-decoration: underline;
+}
+
+
+/* ------Login section------ */
+
+.logoSection .logo1 {
+    float: left;
+    height: 70px;
+    width: 57.39px;
+    background: url(../images/logoOurCompany.PNG)no-repeat;
+    background-size: contain;
+}
+
+.logoSection .logo2 {
+    float: right;
+    height: 70px;
+    width: 200px;
+    background: url(../images/logoBarSheva.png)no-repeat;
+    background-size: contain;
 }
 
 .loginLine {
     width: 100%;
     height: 38px;
     background-color: #7a7a7a;
+    padding-top: 5px;
 }
 
 .loginLine a {
     font-size: 18px;
-    margin: 10px;
+    margin: 16px;
     color: #000000;
 }
 
-aside {
-    width: 152px;
-    height: 700px;
-    background: #0275d8;
-}
 
-main {
-    background: #EBEF18;
-    height: 700px;
-    width: 1048px;
-    float: right;
-}
-
-footer {
-    width: 100%;
-    height: 41px;
-    background-color: #000000;
-}
-
-.clear {
-    clear: both;
-}
+/* ------Nav------ */
 
 li a {
     font-size: 24px;
     color: #000000;
-    text-decoration: none;
 }
 
 
-/*-------Layout3-------*/
+/* ------Facilitys layout------ */
 
-#layout3 #wrapper {
+#facilityLayout aside {
+    width: 12.666666666666666%;
+    min-height: 700px;
+}
+
+#facilityLayout aside img {
+    margin: 16px;
+}
+
+#facilityLayout aside h3 {
+    font-family: 'Baloo Bhai', cursive;
+    font-size: 16px;
+    margin: 16px;
+}
+
+#facilityLayout aside h3:hover {
+    text-decoration-line: underline;
+    text-decoration-color: #000000;
+}
+
+#facilityLayout main {
+    min-height: 700px;
+    width: 87.33333333333333%;
+    float: right;
+}
+
+#facilityLayout .facilitieLink {
+    float: left;
+    margin: 50px;
+    background-color: #ffffff;
+    border-radius: 10ch;
+    width: 114px;
+    height: 110px;
+    border: 1px solid black;
+}
+
+#facilityLayout .facilitieLink a img {
+    width: 100px;
+    height: 100px;
+    margin: 7px;
+    border-radius: 10ch;
+}
+
+
+/* ------Home layout------ */
+
+#homeLayout .actionCircle {
+    float: left;
+    margin: 50px;
+    background-color: black;
+    border-radius: 10ch;
+    width: 123px;
+    height: 123px;
+    color: #ffffff;
+    padding-top: 20px;
+}
+
+#homeLayout main {
+    height: 550px;
+}
+
+#homeLayout .menuArea {
+    width: 55.75%;
+    min-height: 200px;
     margin: 0 auto;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    text-align: center;
+    font-size: 24px;
+    padding-top: 100px;
 }
 
-#layout3 .leftNav {
-    float: left;
-    width: 25.833333333333332%;
-    min-height: 995px;
-    background: #E5E5E5;
-}
 
-#layout3 main {
-    float: left;
-    width: 66.94444444444444%;
-}
+/* ------Form layout------ */
 
-#layout3 .rightSquare {
-    float: right;
-    width: 7.222222222222222%;
-    min-height: 995px;
-    background: rgba(24, 239, 33, 0.3);
-}
-
-#layout3 .leftNav li {
-    float: left;
-    margin-left: 18px;
-    margin-top: 123px;
-    list-style: none;
-}
-
-#layout3 .downSquare {
-    width: 100%;
-    height: 463px;
-    background: #EBEF18;
-}
-
-#layout3 #button {
-    float: right;
-    width: 80px;
-    height: 80px;
-    margin: 21px 24px;
-    background: #000000;
-}
-
-#layout3 footer {
-    top: 1581px;
+#formLayout form {
+    padding: 10px 16px;
 }
 
 
 /*-------Media Query-------*/
-
-@media (max-width:851px) {
-    #layout3 .rightSquare {
-        display: none;
-    }
-    #layout3 .leftNav {
-        float: none;
-        width: 100%;
-        clear: both;
-        min-height: 105px;
-        max-height: 105px;
-    }
-    #layout3 main {
-        float: none;
-        width: 100%;
-        min-height: 1346px;
-    }
-    #layout3 .leftNav li {
-        margin-top: 0px;
-    }
-    #layout3 .downSquare {
-        height: 474px
-    }
-}
