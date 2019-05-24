@@ -203,3 +203,25 @@ li a {
 
 
 /*-------Media Query-------*/
+
+@media only screen and (max-width: 481px) {
+    aside {
+        display: none;
+    }
+    #facilityLayout main {
+        width: 100%;
+    }
+    li a {
+        font-size: 16px;
+    }
+    .logoSection .logo1 {
+        height: 40px;
+    }
+    .logoSection .logo2 {
+        height: 40px;
+        width: 100px;
+    }
+    ul.breadcrumb li {
+        font-size: 10px;
+    }
+}

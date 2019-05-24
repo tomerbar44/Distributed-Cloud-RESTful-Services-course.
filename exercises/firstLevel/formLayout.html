@@ -20,10 +20,7 @@
                 <a class="logo1" href="#"></a>
                 <a class="logo2" href="#"></a>
             </section>
-
         </header>
-
-
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
@@ -46,11 +43,8 @@
             <li><a href="facilitysLayout.html">Facilities</a></li>
             <li class="currentPage">Add a facility</li>
         </ul>
-
-
-
         <main>
-            <form action="includes/get_params_login.php" method="GET">
+            <form action="includes/get_params_login.php" method="GET" id="target">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
@@ -87,15 +81,17 @@
                         <textarea class="form-control" name="comments" rows="4"></textarea>
                     </div>
                 </div>
-                <button class="btn btn-dark" " type="submit ">Submit</button>
-
+                <input type="submit" class="btn btn-dark">
 
             </form>
         </main>
 
 
     </div>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="includes/jQalert.js "></script>
+
 </body>
 
 </html>
