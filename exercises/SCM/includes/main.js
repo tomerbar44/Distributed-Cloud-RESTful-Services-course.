@@ -1,23 +1,25 @@
 (function() {
-    var filter;
+    var powerGroup, aerobicGroup;
 
     function categoryFiltering() {
+        powerGroup = document.getElementsByClassName('power');
+        aerobicGroup = document.getElementsByClassName('aerobic');
         if (this.innerHTML === 'Aerobic') {
-            filter = document.getElementsByClassName('power');
-            if (filter[0].style.display === 'none') {
-                filter[0].style.display = 'block';
-            } else {
-                filter[0].style.display = 'none';
+            if (powerGroup[0].style.display === 'block') // for two clicks
+                powerGroup[0].style.display = 'none';
+            else {
+                powerGroup[0].style.display = 'block';
             }
+            aerobicGroup[0].style.display = 'block';
         } else {
-            filter = document.getElementsByClassName('aerobic');
-            if (filter[0].style.display === 'none') {
-                filter[0].style.display = 'block';
-            } else {
-                filter[0].style.display = 'none';
+            if (aerobicGroup[0].style.display === 'block') // for two clicks
+                aerobicGroup[0].style.display = 'none';
+            else {
+                aerobicGroup[0].style.display = 'block';
             }
-        }
+            powerGroup[0].style.display = 'block';
 
+        }
     }
 
     document.getElementById('filterPower').onclick = categoryFiltering;
