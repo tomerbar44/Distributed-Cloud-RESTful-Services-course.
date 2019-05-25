@@ -1,7 +1,6 @@
 (function() {
-    var powerGroup, aerobicGroup;
-
     function categoryFiltering() {
+        var powerGroup, aerobicGroup;
         powerGroup = document.getElementsByClassName('power');
         aerobicGroup = document.getElementsByClassName('aerobic');
         if (this.innerHTML === 'Aerobic') {
