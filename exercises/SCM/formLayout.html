@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Tomer Bar</title>
+    <title>SCM</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -37,42 +37,41 @@
                 </li>
             </ul>
         </nav>
-
         <ul class="breadcrumb">
             <li><a href="index.html">Home</a></li>
             <li><a href="facilitysLayout.html">Facilities</a></li>
             <li class="currentPage">Add a facility</li>
         </ul>
         <main>
-            <form action="includes/get_params_login.php" method="GET" id="target">
+            <form action="includes/get_params_login.php" method="GET">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control" id="name" name="name">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Code</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="code">
+                        <input type="text" class="form-control" id="code" name="code">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Number</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" name="number">
+                        <input type="number" class="form-control" id="number" name="number">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Provider</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="provider">
+                        <input type="text" class="form-control" id="provider" name="provider">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" name="date">
+                        <input type="date" class="form-control" id="date" name="date">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -82,11 +81,9 @@
                     </div>
                 </div>
                 <input type="submit" class="btn btn-dark">
-
+                <span></span>
             </form>
         </main>
-
-
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>

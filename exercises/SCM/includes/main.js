@@ -1,10 +1,8 @@
-//Global variables
-
 (function() {
     var filter;
 
     function categoryFiltering() {
-        if (this.innerHTML === 'Power') {
+        if (this.innerHTML === 'Aerobic') {
             filter = document.getElementsByClassName('power');
             if (filter[0].style.display === 'none') {
                 filter[0].style.display = 'block';
