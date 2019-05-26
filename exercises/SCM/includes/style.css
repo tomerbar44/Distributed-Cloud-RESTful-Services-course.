@@ -18,6 +18,10 @@ header {
     height: 117px;
 }
 
+body {
+    color: #000000;
+}
+
 main {
     width: 100%;
 }
@@ -27,6 +31,7 @@ footer {
     height: 90px;
     background-color: #000000;
     color: #62c462;
+    font-family: Helvetica;
 }
 
 .clear {
@@ -62,17 +67,14 @@ ul.breadcrumb li {
 
 ul.breadcrumb li+li:before {
     padding: 8px;
-    color: black;
     content: ">>\00a0";
 }
 
 .currentPage {
-    color: #000000;
     padding-top: 6px;
 }
 
 ul.breadcrumb li a {
-    color: #000000;
     text-decoration: none;
 }
 
@@ -84,7 +86,7 @@ ul.breadcrumb li a:hover {
 
 /* ------Login section------ */
 
-.logoSection .logo1 {
+.logo1 {
     float: left;
     height: 70px;
     width: 57.39px;
@@ -92,7 +94,7 @@ ul.breadcrumb li a:hover {
     background-size: contain;
 }
 
-.logoSection .logo2 {
+.logo2 {
     float: right;
     height: 70px;
     width: 200px;
@@ -119,6 +121,35 @@ ul.breadcrumb li a:hover {
 li a {
     font-size: 24px;
     color: #000000;
+}
+
+
+/* ------Home layout------ */
+
+#homeLayout .actionCircle {
+    float: left;
+    margin: 50px;
+    background-color: black;
+    border-radius: 10ch;
+    width: 123px;
+    height: 123px;
+    color: #ffffff;
+    padding-top: 20px;
+}
+
+#homeLayout main {
+    min-height: 430px;
+    background: url(../images/home_background.jpeg)no-repeat;
+    background-size: contain;
+}
+
+#homeLayout .menuArea {
+    width: 55.75%;
+    min-height: 200px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 24px;
+    padding-top: 100px;
 }
 
 
@@ -168,33 +199,6 @@ li a {
 }
 
 
-/* ------Home layout------ */
-
-#homeLayout .actionCircle {
-    float: left;
-    margin: 50px;
-    background-color: black;
-    border-radius: 10ch;
-    width: 123px;
-    height: 123px;
-    color: #ffffff;
-    padding-top: 20px;
-}
-
-#homeLayout main {
-    height: 550px;
-}
-
-#homeLayout .menuArea {
-    width: 55.75%;
-    min-height: 200px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 24px;
-    padding-top: 100px;
-}
-
-
 /* ------Form layout------ */
 
 #formLayout form {
@@ -205,6 +209,9 @@ li a {
 /*-------Media Query-------*/
 
 @media only screen and (max-width: 481px) {
+    .loginLine a {
+        font-size: 16px
+    }
     aside {
         display: none;
     }
@@ -214,10 +221,10 @@ li a {
     li a {
         font-size: 16px;
     }
-    .logoSection .logo1 {
+    .logo1 {
         height: 40px;
     }
-    .logoSection .logo2 {
+    .logo2 {
         height: 40px;
         width: 100px;
     }
@@ -226,5 +233,14 @@ li a {
     }
     #homeLayout .menuArea {
         padding-top: 0px;
+    }
+    #facilityLayout .facilitieLink {
+        margin: 25px;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    #homeLayout main {
+        background: #ffffff;
     }
 }

@@ -2,8 +2,7 @@
 <html>
 
 <head>
-    <title>Tomer Bar</title>
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
+    <title>SCM</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,10 +14,8 @@
                 <a href="#">Efrat</a>
                 <a href="#">Support</a>
             </section>
-            <section class="logoSection">
-                <a class="logo1" href="#"></a>
-                <a class="logo2" href="#"></a>
-            </section>
+            <a class="logo1" href="#"></a>
+            <a class="logo2" href="#"></a>
         </header>
         <nav>
             <ul class="nav nav-tabs">
