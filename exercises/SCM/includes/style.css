@@ -224,4 +224,7 @@ li a {
     ul.breadcrumb li {
         font-size: 10px;
     }
+    #homeLayout .menuArea {
+        padding-top: 0px;
+    }
 }
