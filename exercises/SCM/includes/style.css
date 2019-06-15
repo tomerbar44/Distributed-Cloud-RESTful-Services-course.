@@ -1,246 +1,231 @@
-* {
-    margin: 0px;
-    padding: 0px;
-}
-
-main,
-nav,
-article,
-aside,
-section,
-header,
-footer {
-    display: block;
-}
-
-header {
-    width: 100%;
-    height: 117px;
-}
-
-body {
-    color: #000000;
-}
-
-main {
-    width: 100%;
-}
-
-footer {
-    width: 100%;
-    height: 90px;
-    background-color: #000000;
-    color: #62c462;
-    font-family: Helvetica;
-}
-
-.clear {
-    clear: both;
-}
-
-#wrapper {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.table td,
-.table th {
-    padding: 16px;
-}
-
-
-/* ------Bredcrumb------ */
-
-ul.breadcrumb {
-    padding: 10px 16px;
-    list-style: none;
-    background: #ffffff;
-}
-
-ul.breadcrumb li {
-    font-size: 18px;
-}
-
-
-/* Add a slash symbol (>>) before/behind each list item */
-
-ul.breadcrumb li+li:before {
-    padding: 8px;
-    content: ">>\00a0";
-}
-
-.currentPage {
-    padding-top: 6px;
-}
-
-ul.breadcrumb li a {
-    text-decoration: none;
-}
-
-ul.breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
-}
-
-
-/* ------Login section------ */
-
-.logo1 {
-    float: left;
-    height: 70px;
-    width: 57.39px;
-    background: url(../images/logoOurCompany.PNG)no-repeat;
-    background-size: contain;
-}
-
-.logo2 {
-    float: right;
-    height: 70px;
-    width: 200px;
-    background: url(../images/logoBarSheva.png)no-repeat;
-    background-size: contain;
-}
-
-.loginLine {
-    width: 100%;
-    height: 38px;
-    background-color: #7a7a7a;
-    padding-top: 5px;
-}
-
-.loginLine a {
-    font-size: 18px;
-    margin: 16px;
-    color: #000000;
-}
-
-
-/* ------Nav------ */
-
-li a {
-    font-size: 24px;
-    color: #000000;
-}
-
-
-/* ------Home layout------ */
-
-#homeLayout .actionCircle {
-    float: left;
-    margin: 50px;
-    background-color: black;
-    border-radius: 10ch;
-    width: 123px;
-    height: 123px;
-    color: #ffffff;
-    padding-top: 20px;
-}
-
-#homeLayout main {
-    min-height: 430px;
-    background: url(../images/home_background.jpeg)no-repeat;
-    background-size: contain;
-}
-
-#homeLayout .menuArea {
-    width: 55.75%;
-    min-height: 200px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 24px;
-    padding-top: 100px;
-}
-
-
-/* ------Facilitys layout------ */
-
-#facilityLayout aside {
-    width: 12.666666666666666%;
-    min-height: 700px;
-}
-
-#facilityLayout aside img {
-    margin: 16px;
-}
-
-#facilityLayout aside h3 {
-    font-family: 'Baloo Bhai', cursive;
-    font-size: 16px;
-    margin: 16px;
-}
-
-#facilityLayout aside h3:hover {
-    text-decoration-line: underline;
-    text-decoration-color: #000000;
-}
-
-#facilityLayout main {
-    min-height: 700px;
-    width: 87.33333333333333%;
-    float: right;
-}
-
-#facilityLayout .facilitieLink {
-    float: left;
-    margin: 50px;
-    background-color: #ffffff;
-    border-radius: 10ch;
-    width: 114px;
-    height: 110px;
-    border: 1px solid black;
-}
-
-#facilityLayout .facilitieLink a img {
-    width: 100px;
-    height: 100px;
-    margin: 7px;
-    border-radius: 10ch;
-}
-
-
-/* ------Form layout------ */
-
-#formLayout form {
-    padding: 10px 16px;
-}
-
-
-/*-------Media Query-------*/
-
-@media only screen and (max-width: 481px) {
-    .loginLine a {
-        font-size: 16px
-    }
-    aside {
-        display: none;
-    }
-    #facilityLayout main {
-        width: 100%;
-    }
-    li a {
-        font-size: 16px;
-    }
-    .logo1 {
-        height: 40px;
-    }
-    .logo2 {
-        height: 40px;
-        width: 100px;
-    }
-    ul.breadcrumb li {
-        font-size: 10px;
-    }
-    #homeLayout .menuArea {
-        padding-top: 0px;
-    }
-    #facilityLayout .facilitieLink {
-        margin: 25px;
-    }
-}
-
-@media only screen and (max-width: 1199px) {
-    #homeLayout main {
-        background: #ffffff;
-    }
-}
+                                * {
+                                    margin: 0px;
+                                    padding: 0px;
+                                }
+                                
+                                main,
+                                nav,
+                                article,
+                                aside,
+                                section,
+                                header,
+                                footer {
+                                    display: block;
+                                }
+                                
+                                header {
+                                    width: 100%;
+                                    height: 117px;
+                                }
+                                
+                                body {
+                                    color: #000000;
+                                }
+                                
+                                main {
+                                    width: 100%;
+                                }
+                                
+                                footer {
+                                    width: 100%;
+                                    height: 90px;
+                                    background-color: #000000;
+                                    color: #62c462;
+                                    font-family: Helvetica;
+                                }
+                                
+                                .clear {
+                                    clear: both;
+                                }
+                                
+                                #wrapper {
+                                    width: 100%;
+                                    max-width: 1200px;
+                                    margin: 0 auto;
+                                }
+                                
+                                .table td,
+                                .table th {
+                                    padding: 16px;
+                                }
+                                /* ------Bredcrumb------ */
+                                
+                                ul.breadcrumb {
+                                    padding: 10px 16px;
+                                    list-style: none;
+                                    background: #ffffff;
+                                }
+                                
+                                ul.breadcrumb li {
+                                    font-size: 18px;
+                                }
+                                /* Add a slash symbol (>>) before/behind each list item */
+                                
+                                ul.breadcrumb li+li:before {
+                                    padding: 8px;
+                                    content: ">>\00a0";
+                                }
+                                
+                                .currentPage {
+                                    padding-top: 6px;
+                                }
+                                
+                                ul.breadcrumb li a {
+                                    text-decoration: none;
+                                }
+                                
+                                ul.breadcrumb li a:hover {
+                                    color: #01447e;
+                                    text-decoration: underline;
+                                }
+                                /* ------Login section------ */
+                                
+                                .logo1 {
+                                    float: left;
+                                    height: 70px;
+                                    width: 57.39px;
+                                    background: url(../images/logoOurCompany.PNG)no-repeat;
+                                    background-size: contain;
+                                }
+                                
+                                .logo2 {
+                                    float: right;
+                                    height: 70px;
+                                    width: 200px;
+                                    background: url(../images/logoBarSheva.png)no-repeat;
+                                    background-size: contain;
+                                }
+                                
+                                .loginLine {
+                                    width: 100%;
+                                    height: 38px;
+                                    background-color: #7a7a7a;
+                                    padding-top: 5px;
+                                }
+                                
+                                .loginLine a {
+                                    font-size: 18px;
+                                    margin: 16px;
+                                    color: #000000;
+                                }
+                                /* ------Nav------ */
+                                
+                                li a {
+                                    font-size: 24px;
+                                    color: #000000;
+                                }
+                                /* ------Home layout------ */
+                                
+                                #homeLayout .actionCircle {
+                                    float: left;
+                                    margin: 50px;
+                                    background-color: black;
+                                    border-radius: 10ch;
+                                    width: 123px;
+                                    height: 123px;
+                                    color: #ffffff;
+                                    padding-top: 20px;
+                                }
+                                
+                                #homeLayout main {
+                                    min-height: 430px;
+                                    background: url(../images/home_background.jpeg)no-repeat;
+                                    background-size: contain;
+                                    clear: both;
+                                }
+                                
+                                #homeLayout .menuArea {
+                                    width: 55.75%;
+                                    min-height: 200px;
+                                    margin: 0 auto;
+                                    text-align: center;
+                                    font-size: 24px;
+                                    padding-top: 100px;
+                                }
+                                /* ------Facilitys layout------ */
+                                
+                                #facilityLayout aside {
+                                    width: 12.666666666666666%;
+                                    min-height: 700px;
+                                }
+                                
+                                #facilityLayout aside img {
+                                    margin: 16px;
+                                }
+                                
+                                #facilityLayout aside h3 {
+                                    font-family: 'Baloo Bhai', cursive;
+                                    font-size: 16px;
+                                    margin: 16px;
+                                }
+                                
+                                #facilityLayout aside h3:hover {
+                                    text-decoration-line: underline;
+                                    text-decoration-color: #000000;
+                                }
+                                
+                                #facilityLayout main {
+                                    min-height: 700px;
+                                    width: 87.33333333333333%;
+                                    float: right;
+                                }
+                                
+                                #facilityLayout .facilitieLink {
+                                    float: left;
+                                    margin: 50px;
+                                    background-color: #ffffff;
+                                    border-radius: 10ch;
+                                    width: 114px;
+                                    height: 110px;
+                                    border: 1px solid black;
+                                }
+                                
+                                #facilityLayout .facilitieLink a img {
+                                    width: 100px;
+                                    height: 100px;
+                                    margin: 7px;
+                                    border-radius: 10ch;
+                                }
+                                /* ------Form layout------ */
+                                
+                                #formLayout form {
+                                    padding: 10px 16px;
+                                }
+                                /*-------Media Query-------*/
+                                
+                                @media only screen and (max-width: 481px) {
+                                    .loginLine a {
+                                        font-size: 16px
+                                    }
+                                    aside {
+                                        display: none;
+                                    }
+                                    #facilityLayout main {
+                                        width: 100%;
+                                    }
+                                    li a {
+                                        font-size: 16px;
+                                    }
+                                    .logo1 {
+                                        height: 40px;
+                                    }
+                                    .logo2 {
+                                        height: 40px;
+                                        width: 100px;
+                                    }
+                                    ul.breadcrumb li {
+                                        font-size: 10px;
+                                    }
+                                    #homeLayout .menuArea {
+                                        padding-top: 0px;
+                                    }
+                                    #facilityLayout .facilitieLink {
+                                        margin: 25px;
+                                    }
+                                }
+                                
+                                @media only screen and (max-width: 1199px) {
+                                    #homeLayout main {
+                                        background: #ffffff;
+                                    }
+                                }

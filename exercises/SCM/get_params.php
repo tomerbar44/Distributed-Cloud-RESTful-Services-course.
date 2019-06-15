@@ -4,7 +4,7 @@
 <head>
     <title>SCM</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="includes/style.css">
 </head>
 
 <body id="detailsSaveLayout">
@@ -20,13 +20,13 @@
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.html">Home</a>
+                    <a class="nav-link" href="./index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Report</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="../facilitysLayout.html">Facilities</a>
+                    <a class="nav-link active" href="./facilitysLayout.html">Facilities</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Subscribers</a>
@@ -34,9 +34,9 @@
             </ul>
         </nav>
         <ul class="breadcrumb">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../facilitysLayout.html">Facilities</a></li>
-            <li><a href="../formLayout.html">Add a facility</a></li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./facilitysLayout.html">Facilities</a></li>
+            <li><a href="./formLayout.html">Add a facility</a></li>
             <li class="currentPage">Details saved</li>
         </ul>
         <main>
