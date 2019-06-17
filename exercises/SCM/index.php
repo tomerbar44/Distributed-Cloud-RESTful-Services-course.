@@ -21,13 +21,13 @@
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.html">Home</a>
+                    <a class="nav-link active" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Report</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="facilitysLayout.html">Facilities</a>
+                    <a class="nav-link" href="facilitysLayout.php">Facilities</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Subscribers</a>

@@ -20,13 +20,13 @@
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.html">Home</a>
+                    <a class="nav-link" href="./index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Report</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="./facilitysLayout.html">Facilities</a>
+                    <a class="nav-link active" href="./facilitysLayout.php">Facilities</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Subscribers</a>
@@ -34,9 +34,9 @@
             </ul>
         </nav>
         <ul class="breadcrumb">
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./facilitysLayout.html">Facilities</a></li>
-            <li><a href="./formLayout.html">Add a facility</a></li>
+            <li><a href="./index.php">Home</a></li>
+            <li><a href="./facilitysLayout.php">Facilities</a></li>
+            <li><a href="./formLayout.php">Add a facility</a></li>
             <li class="currentPage">Details saved</li>
         </ul>
         <main>

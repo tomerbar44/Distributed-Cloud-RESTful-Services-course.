@@ -32,6 +32,7 @@
        background-color: #000000;
        color: #62c462;
        font-family: Helvetica;
+       clear: both;
    }
    
    .clear {
@@ -127,10 +128,23 @@
        padding-top: 20px;
    }
    
+   #homeLayout .actionEnter .actionCircle {
+       background-color: #92d36e;
+       border-radius: 10ch;
+       display: none;
+   }
+   
    #homeLayout main {
        min-height: 430px;
        background: url(../images/home_background.jpeg)no-repeat;
        background-size: contain;
+       clear: both;
+   }
+   
+   #homeLayout .gil_main {
+       min-height: 430px;
+       background-size: contain;
+       background: #ffffff;
        clear: both;
    }
    
@@ -178,9 +192,13 @@
        width: 114px;
        height: 110px;
        border: 1px solid black;
+       font-family: Arial, Helvetica, sans-serif;
+       text-align: center;
+       text-decoration: none;
+       color: #000000;
    }
    
-   #facilityLayout .facilitieLink a img {
+   #facilityLayout .facilitieLink img {
        width: 100px;
        height: 100px;
        margin: 7px;
@@ -190,6 +208,16 @@
    
    #formLayout form {
        padding: 10px 16px;
+   }
+   /* ------Barcode layout------ */
+   
+   #barcodeLayout main {
+       margin: 0 auto;
+       background: url(../images/barcode_img.jpg)no-repeat;
+       background-size: contain;
+       width: 100px;
+       height: 100px;
+       min-height: 430px;
    }
    /*-------Media Query-------*/
    
@@ -218,6 +246,9 @@
        }
        #homeLayout .menuArea {
            padding-top: 0px;
+       }
+       #homeLayout .actionEnter .actionCircle {
+           display: block;
        }
        #facilityLayout .facilitieLink {
            margin: 25px;
