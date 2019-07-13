@@ -12,43 +12,43 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="#">Gil</a>
+                <a href="informationUser.php"><?php session_start();
+                 echo  $_SESSION["user_name"];?></a>
                 <a href="#">Support</a>
             </section>
-            <a class="logo1" href="index_gil.php"></a>
-            <a class="logo2" href="index_gil.php"></a>
+            <a class="logo1" href="index_admin.php"></a>
+            <a class="logo2" href="index_admin.php"></a>
         </header>
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index_gil.php">Home</a>
+                    <a class="nav-link active" href="index_admin.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Trainings</a>
+                    <a class="nav-link" href="#">Report</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="facilitysLayout.php">Facilities</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Subscribers</a>
                 </li>
             </ul>
         </nav>
         <ul class="breadcrumb">
             <li class="currentPage">Home</li>
         </ul>
-        <main class="gil_main">
+        <main>
             <section class="menuArea">
-                <a href="barcode.html" class="actionEnter">
-                    <div class="actionCircle">Barcode entry</div>
+                <a href="formLayout.php">
+                    <div class="actionCircle">Add a facility</div>
                 </a>
-                <a href="formLayout.html">
+                <a href="#">
+                    <div class="actionCircle">Add subscriber</div>
+                </a>
+                <a href="#">
                     <div class="actionCircle">Add training</div>
                 </a>
-                <a href="#">
-                    <div class="actionCircle">My trainings</div>
-                </a>
-                <a href="#">
-                    <div class="actionCircle">Activity time</div>
-                </a>
-
             </section>
         </main>
 
@@ -57,6 +57,7 @@
             <p>Boxing training is canceled today</p>
         </footer>
     </div>
+   
 </body>
 
 </html>

@@ -60,6 +60,13 @@
    ul.breadcrumb li {
        font-size: 18px;
    }
+   /* ------Login layout------ */
+   
+   #loginPage .wrapperLogin {
+       width: 50%;
+       /* according to design's width*/
+       margin: 0px auto;
+   }
    /* Add a slash symbol (>>) before/behind each list item */
    
    ul.breadcrumb li+li:before {
@@ -115,6 +122,11 @@
        font-size: 24px;
        color: #000000;
    }
+   
+   #informationUserLayout .card {
+       margin: 0 auto;
+       width: 100%;
+   }
    /* ------Home layout------ */
    
    #homeLayout .actionCircle {
@@ -143,8 +155,8 @@
    
    #homeLayout .gil_main {
        min-height: 430px;
+       background: url(../images/user_back.jpg)no-repeat;
        background-size: contain;
-       background: #ffffff;
        clear: both;
    }
    
@@ -204,10 +216,25 @@
        margin: 7px;
        border-radius: 10ch;
    }
+   
+   #facilityDetailsLayout .closeBtn {
+       background-color: #ffffff;
+       border: 0px;
+   }
+   
+   #detailsSaveLayout .card-img,
+   #facilityDetailsLayout .card-img {
+       width: 150px;
+       height: 150px;
+   }
    /* ------Form layout------ */
    
    #formLayout form {
        padding: 10px 16px;
+   }
+   
+   #formLayout .card {
+       border: 0px;
    }
    /* ------Barcode layout------ */
    
@@ -218,6 +245,12 @@
        width: 100px;
        height: 100px;
        min-height: 430px;
+   }
+   /* ------Trainings for late comming layout------ */
+   
+   #trainingsForLateLayout main a {
+       width: 50%;
+       padding: 10px 16px;
    }
    /*-------Media Query-------*/
    
@@ -252,6 +285,9 @@
        }
        #facilityLayout .facilitieLink {
            margin: 25px;
+       }
+       .facilityImg {
+           display: none;
        }
    }
    

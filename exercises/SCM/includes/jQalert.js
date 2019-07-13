@@ -10,8 +10,8 @@ $("form").submit(function(event) {
         event.preventDefault();
         return;
 
-    } else if ($("#number").val() == '') {
-        $("span").text("Please fill number!").show().fadeOut(1000);
+    } else if ($("#Kind").val() == '') {
+        $("span").text("Please fill kind!").show().fadeOut(1000);
         event.preventDefault();
         return;
 

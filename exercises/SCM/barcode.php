@@ -10,31 +10,36 @@
 
 <body id="barcodeLayout">
     <div id="wrapper">
+
         <header>
             <section class="loginLine">
-                <a href="#">Gil</a>
+                <a href="#"><?php session_start();
+                 echo  $_SESSION["user_name"];?></a>
                 <a href="#">Support</a>
             </section>
-            <a class="logo1" href="index_gil.html"></a>
-            <a class="logo2" href="index_gil.html"></a>
+            <a class="logo1" href="index_user.php"></a>
+            <a class="logo2" href="index_user.php"></a>
         </header>
+
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index_gil.html">Home</a>
+                    <a class="nav-link active" href="index_user.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Trainings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="facilitysLayout.html">Facilities</a>
+                    <a class="nav-link" href="facilitysLayout.php">Facilities</a>
                 </li>
             </ul>
         </nav>
+
         <ul class="breadcrumb">
-            <li><a href="index_gil.html">Home</a></li>
+            <li><a href="index_user.php">Home</a></li>
             <li class="currentPage">Entrance to the center</li>
         </ul>
+        
         <main></main>
 
         <footer>

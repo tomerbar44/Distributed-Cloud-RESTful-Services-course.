@@ -13,16 +13,17 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="#">Efrat</a>
+                <a href="#"><?php session_start();
+                 echo  $_SESSION["user_name"];?></a>
                 <a href="#">Support</a>
             </section>
-            <a class="logo1" href="#"></a>
-            <a class="logo2" href="#"></a>
+            <a class="logo1" href="index_admin.php"></a>
+            <a class="logo2" href="index_admin.php"></a>
         </header>
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="index_admin.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Report</a>
@@ -36,25 +37,27 @@
             </ul>
         </nav>
         <ul class="breadcrumb">
-            <li><a href="index.php">Home</a></li>
+            <li><a href="index_admin.php">Home</a></li>
             <li class="currentPage">Facilities</li>
         </ul>
         <main>
             <div class="aerobic">
+                  <!-- static 
                 <a class="facilitieLink" href="#"><img src="images/ELEPHATIC.jpg" alt="">Elephatic</a>
                 <a class="facilitieLink" href="#"><img src="images/Fitness_bike.jpg" alt="">Fitness bike</a>
                 <a class="facilitieLink" href="#"><img src="images/Treadmill.jpg" alt="">Treadmill</a>
                 <a class="facilitieLink" href="facilityDetailsLayout.php"><img src="images/Stairs.jpg" alt="">Stairs</a>
-                <a class="facilitieLink" href="#"><img src="images/Backrest_bike.jpg" alt="">Backrest bike</a>
+                <a class="facilitieLink" href="#"><img src="images/Backrest_bike.jpg" alt="">Backrest bike</a> -->
             </div>
             <div class="power">
+                <!-- static 
                 <a class="facilitieLink" href="#"><img src="images/Breast_Pressing.png" alt="">Breast pressing</a>
                 <a class="facilitieLink" href="#"><img src="images/Hip_pressing.jpg" alt="">Hip pressing</a>
                 <a class="facilitieLink" href="#"><img src="images/Hip_push.jpg" alt="">Hip push</a>
                 <a class="facilitieLink" href="#"><img src="images/Knee_Pressing.png" alt="">Knee pressing</a>
                 <a class="facilitieLink" href="#"><img src="images/Knee_bending.jpg" alt="">Knee bending</a>
                 <a class="facilitieLink" href="#"><img src="images/Legs_pressing.png" alt="">Legs pressing</a>
-                <a class="facilitieLink" href="#"><img src="images/Shoulder_Pressing.jpg" alt="">Shoulder pressing</a>
+                <a class="facilitieLink" href="#"><img src="images/Shoulder_Pressing.jpg" alt="">Shoulder pressing</a>-->
             </div>
         </main>
         <aside>
@@ -64,6 +67,8 @@
             <span style="cursor:pointer"><h3 id="filterAerobic">Aerobic</h3></span>
         </aside>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="includes/jsFile.js"></script>
     <script src="includes/main.js"></script>
 </body>
 

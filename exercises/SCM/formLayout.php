@@ -13,16 +13,17 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="#">Efrat</a>
-                <a href="#">Support</a>
+                <a href="#"><?php session_start();
+                            echo  $_SESSION["user_name"]; ?>
+                    <a href="#">Support</a>
             </section>
-            <a class="logo1" href="#"></a>
-            <a class="logo2" href="#"></a>
+            <a class="logo1" href="index_admin.php"></a>
+            <a class="logo2" href="index_admin.php"></a>
         </header>
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="index_admin.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Report</a>
@@ -36,12 +37,12 @@
             </ul>
         </nav>
         <ul class="breadcrumb">
-            <li><a href="index.php">Home</a></li>
+            <li><a href="index_admin.php">Home</a></li>
             <li><a href="facilitysLayout.php">Facilities</a></li>
             <li class="currentPage">Add a facility</li>
         </ul>
         <main>
-            <form action="includes/get_params.php" method="GET">
+            <form action="get_params.php" method="GET">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
@@ -55,9 +56,12 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Number</label>
+                    <label class="col-sm-2 col-form-label">Kind</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="number" name="number">
+                        <select class="form-control" id="Kind" name="kind">
+                            <option>aerobic</option>
+                            <option>power</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -76,6 +80,12 @@
                     <label class="col-sm-2 col-form-label">Comments</label>
                     <div class="col-sm-10">
                         <textarea class="form-control" name="comments" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Img url</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="img" name="img">
                     </div>
                 </div>
                 <input type="submit" class="btn btn-dark" value="Sumbit">

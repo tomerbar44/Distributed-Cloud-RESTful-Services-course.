@@ -12,42 +12,44 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="#">Efrat</a>
+                <a href="informationUser.php"><?php session_start();
+                 echo  $_SESSION["user_name"];?></a>
                 <a href="#">Support</a>
             </section>
-            <a class="logo1" href="#"></a>
-            <a class="logo2" href="#"></a>
+            <a class="logo1" href="index_user.php"></a>
+            <a class="logo2" href="index_user.php"></a>
         </header>
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php">Home</a>
+                    <a class="nav-link active" href="index_user.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Report</a>
+                    <a class="nav-link" href="trainingsLayout.php">Trainings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="facilitysLayout.php">Facilities</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Subscribers</a>
+                    <a class="nav-link" href="#">Facilities</a>
                 </li>
             </ul>
         </nav>
         <ul class="breadcrumb">
             <li class="currentPage">Home</li>
         </ul>
-        <main>
+        <main class="gil_main">
             <section class="menuArea">
-                <a href="formLayout.html">
-                    <div class="actionCircle">Add a facility</div>
+                <a href="barcode.php" class="actionEnter">
+                    <div class="actionCircle">Barcode entry</div>
                 </a>
-                <a href="#">
-                    <div class="actionCircle">Add subscriber</div>
-                </a>
-                <a href="#">
+                <a href="trainingGymForm.php">
                     <div class="actionCircle">Add training</div>
                 </a>
+                <a href="myTrainingsLayout.php">
+                    <div class="actionCircle">My trainings</div>
+                </a>
+                <a href="#">
+                    <div class="actionCircle">Activity time</div>
+                </a>
+
             </section>
         </main>
 
