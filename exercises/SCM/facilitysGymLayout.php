@@ -1,3 +1,17 @@
+<?php
+//get data from DB
+include 'db.php';
+$query1 = "SELECT * FROM tb_facilities_210 WHERE kind=1";
+$query2 = "SELECT * FROM tb_facilities_210 WHERE kind=0";
+$result1 = mysqli_query($connection, $query1);
+$result2 = mysqli_query($connection, $query2);
+if (!$result1) {
+    die("DB query failed.");
+}
+if (!$result2) {
+    die("DB query failed.");
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -13,8 +27,8 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="#"><?php session_start();
-                 echo  $_SESSION["user_name"];?></a>
+                <a href="informationUser.php"><?php session_start();
+                            echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_user"></a>
@@ -39,19 +53,46 @@
             <li class="currentPage">Gym</li>
         </ul>
         <main>
-            <div class="aerobic"></div>
-            <div class="power"></div>
+            <div class="aerobic">
+                <?php
+                //use return data (if any)
+                while ($row = mysqli_fetch_assoc($result1)) { //returns standard array of results. keys are ints
+                    echo "<div class='facilitieLink'><img src='" . $row["img"] . "' alt=''>" . $row["name"] . "</div>";
+                }
+                ?>
+            </div>
+            <div class="power">
+                <?php
+                //use return data (if any)
+                while ($row = mysqli_fetch_assoc($result2)) { //returns standard array of results. keys are ints
+                    echo "<div class='facilitieLink'><img src='" . $row["img"] . "' alt=''>" . $row["name"] . "</div>";
+                }
+                ?>
+            </div>
+            <?php
+            //release returned data
+            mysqli_free_result($result1);
+            mysqli_free_result($result2);
+            ?>
         </main>
         <aside>
             <img src="images/filter_icon.png" alt="">
-            <span style="cursor:pointer"> <h3 id="filterAll">All</h3></span>
-            <span style="cursor:pointer"> <h3 id="filterPower">Power</h3></span>
-            <span style="cursor:pointer"><h3 id="filterAerobic">Aerobic</h3></span>
+            <span style="cursor:pointer">
+                <h3 id="filterAll">All</h3>
+            </span>
+            <span style="cursor:pointer">
+                <h3 id="filterPower">Power</h3>
+            </span>
+            <span style="cursor:pointer">
+                <h3 id="filterAerobic">Aerobic</h3>
+            </span>
         </aside>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="includes/jsGymTrainings.js"></script>
     <script src="includes/main.js"></script>
 </body>
 
 </html>
+<?php
+//close DB connection
+mysqli_close($connection);
+?>

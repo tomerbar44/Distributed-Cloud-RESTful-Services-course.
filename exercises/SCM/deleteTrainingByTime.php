@@ -1,12 +1,16 @@
 <?php
-//get data from DB
+//get data from our from and insert to the table
 include 'db.php';
-$query = "SELECT * FROM tb_kind_of_trainings_210";
+session_start();
+$utime = $_GET["dtime"];
+$id = $_SESSION["user_id"];
+$query = "DELETE FROM tb_training_210 WHERE ID=$id AND time='$utime' ";
 $result = mysqli_query($connection, $query);
 if (!$result) {
     die("DB query failed.");
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -18,58 +22,50 @@ if (!$result) {
     <link rel="stylesheet" href="includes/style.css">
 </head>
 
-<body id="facilityLayout">
+<body id="formLayout">
     <div id="wrapper">
+
         <header>
             <section class="loginLine">
-                <a href="informationUser.php"><?php session_start();
+                <a href="informationUser.php"><?php
                                                 echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_user.php"></a>
             <a class="logo2" href="index_user.php"></a>
         </header>
+
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link" href="index_user.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Trainings</a>
+                    <a class="nav-link active" href="trainingsLayout.php">Trainings</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Facilities</a>
                 </li>
             </ul>
         </nav>
+
         <ul class="breadcrumb">
             <li><a href="index_user.php">Home</a></li>
-            <li class="currentPage">Trainings</li>
+            <li><a href="trainingsLayout.php">Trainings</a></li>
+            <li><a href="myTrainingsLayout.php">My trainings</a></li>
+            <li class="currentPage">Deleting training</li>
+
         </ul>
+
         <main>
             <?php
-            //use return data (if any)
-            while ($row = mysqli_fetch_assoc($result)) { //returns standard array of results. keys are ints
-                if($row["ID"]==3){
-                    echo "<a class='facilitieLink' href='facilitysGymLayout.php?' ". $row["ID"]." ><img src=' ".$row["img"]  ."' alt=''>". $row["name"]. "</a>";
-                }
-                else{
-                    echo "<a class='facilitieLink' href='#'><img src=' ".$row["img"]  ."' alt=''>". $row["name"]. "</a>";
-                }
-                
-                
-            }
+             echo "<h3 class='confirmMessage'>Training in: ". $utime." successfully deleted !</h3>";
             ?>
-            <?php
-            //release returned data
-            mysqli_free_result($result);
-            ?>
-
-
         </main>
 
+        
+
     </div>
-  
 </body>
 
 </html>

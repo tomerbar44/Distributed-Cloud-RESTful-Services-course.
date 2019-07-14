@@ -12,7 +12,7 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="#"><?php session_start();
+                <a href="informationUser.php"><?php session_start();
                             echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
@@ -43,7 +43,7 @@
         <main>
             <button type="button" class="closeBtn" data-toggle="modal" data-target="#confirmation"><img src="https://img.icons8.com/material-rounded/24/000000/delete-sign.png"></button>
             <button type="button" class="closeBtn"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png"></button>
-            <div class="modal" id="confirmation">
+            <div class="modal fade" id="confirmation">
                 <div class="modal-dialog">
                     <div class="modal-content">
 

@@ -1,3 +1,17 @@
+<?php
+//get data from DB
+include 'db.php';
+$query1 = "SELECT * FROM tb_facilities_210 WHERE kind=1";
+$query2 = "SELECT * FROM tb_facilities_210 WHERE kind=0";
+$result1 = mysqli_query($connection, $query1);
+$result2 = mysqli_query($connection, $query2);
+if (!$result1) {
+    die("DB query failed.");
+}
+if (!$result2) {
+    die("DB query failed.");
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +27,7 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="#"><?php session_start();
+                <a href="informationUser.php"><?php session_start();
                  echo  $_SESSION["user_name"];?></a>
                 <a href="#">Support</a>
             </section>
@@ -41,24 +55,27 @@
             <li class="currentPage">Facilities</li>
         </ul>
         <main>
-            <div class="aerobic">
-                  <!-- static 
-                <a class="facilitieLink" href="#"><img src="images/ELEPHATIC.jpg" alt="">Elephatic</a>
-                <a class="facilitieLink" href="#"><img src="images/Fitness_bike.jpg" alt="">Fitness bike</a>
-                <a class="facilitieLink" href="#"><img src="images/Treadmill.jpg" alt="">Treadmill</a>
-                <a class="facilitieLink" href="facilityDetailsLayout.php"><img src="images/Stairs.jpg" alt="">Stairs</a>
-                <a class="facilitieLink" href="#"><img src="images/Backrest_bike.jpg" alt="">Backrest bike</a> -->
+        <div class="aerobic">
+                <?php
+                //use return data (if any)
+                while ($row = mysqli_fetch_assoc($result1)) { //returns standard array of results. keys are ints
+                    echo "<a class='facilitieLink' href='facilityDetailsLayout.php?". $row["ID"]."'><img src='".$row["img"] ."' alt=' '>".$row["name"]."</a>";
+                }
+                ?>
             </div>
             <div class="power">
-                <!-- static 
-                <a class="facilitieLink" href="#"><img src="images/Breast_Pressing.png" alt="">Breast pressing</a>
-                <a class="facilitieLink" href="#"><img src="images/Hip_pressing.jpg" alt="">Hip pressing</a>
-                <a class="facilitieLink" href="#"><img src="images/Hip_push.jpg" alt="">Hip push</a>
-                <a class="facilitieLink" href="#"><img src="images/Knee_Pressing.png" alt="">Knee pressing</a>
-                <a class="facilitieLink" href="#"><img src="images/Knee_bending.jpg" alt="">Knee bending</a>
-                <a class="facilitieLink" href="#"><img src="images/Legs_pressing.png" alt="">Legs pressing</a>
-                <a class="facilitieLink" href="#"><img src="images/Shoulder_Pressing.jpg" alt="">Shoulder pressing</a>-->
+                <?php
+                //use return data (if any)
+                while ($row = mysqli_fetch_assoc($result2)) { //returns standard array of results. keys are ints
+                    echo "<a class='facilitieLink' href='facilityDetailsLayout.php?". $row["ID"]."'><img src='".$row["img"] ."' alt=' '>".$row["name"]."</a>";
+                }
+                ?>
             </div>
+            <?php
+            //release returned data
+            mysqli_free_result($result1);
+            mysqli_free_result($result2);
+            ?>
         </main>
         <aside>
             <img src="images/filter_icon.png" alt="">
@@ -67,9 +84,10 @@
             <span style="cursor:pointer"><h3 id="filterAerobic">Aerobic</h3></span>
         </aside>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="includes/jsFile.js"></script>
     <script src="includes/main.js"></script>
 </body>
-
 </html>
+<?php
+//close DB connection
+mysqli_close($connection);
+?>

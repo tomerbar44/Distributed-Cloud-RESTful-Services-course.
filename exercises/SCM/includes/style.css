@@ -49,6 +49,10 @@
    .table th {
        padding: 16px;
    }
+   
+   .confirmMessage {
+       padding: 16px;
+   }
    /* ------Bredcrumb------ */
    
    ul.breadcrumb {
@@ -217,6 +221,7 @@
        border-radius: 10ch;
    }
    
+   #myTrainingsLayout .closeBtn,
    #facilityDetailsLayout .closeBtn {
        background-color: #ffffff;
        border: 0px;

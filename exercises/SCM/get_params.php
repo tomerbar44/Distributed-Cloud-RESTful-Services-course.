@@ -1,3 +1,25 @@
+<?php
+//get data from our from and insert to the table
+include 'db.php';
+$uname = $_GET["name"];
+$ucode = $_GET["code"];
+if ($_GET["kind"] == "aerobic") {
+    $unum = 1;
+} else {
+    $unum = 0;
+}
+$upro = $_GET["provider"];
+$udate = $_GET["date"];
+$ucomm = $_GET["comments"];
+$uimg = $_GET["img"];
+$query = "INSERT INTO tb_facilities_210 (ID, name, provider,date,comment,kind,img)
+            VALUES ('$ucode', '$uname', '$upro','$udate','$ucomm','$unum','$uimg')";
+
+$result = mysqli_query($connection, $query);
+if (!$result) {
+    die("DB query failed.");
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +33,7 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="#"><?php session_start();
+                <a href="informationUser.php"><?php session_start();
                             echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
@@ -42,24 +64,7 @@
         </ul>
         <main>
             <?php
-            include 'db.php';
-            $uname = $_GET["name"];
-            $ucode = $_GET["code"];
-            if ($_GET["kind"] == "aerobic") {
-                $unum = 1;
-            } else {
-                $unum = 0;
-            }
-            $upro = $_GET["provider"];
-            $udate = $_GET["date"];
-            $ucomm = $_GET["comments"];
-            $uimg = $_GET["img"];
-
-            $sql = "INSERT INTO tb_facilities_210 (ID, name, provider,date,comment,kind,img)
-            VALUES ('$ucode', '$uname', '$upro','$udate','$ucomm','$unum','$uimg')";
-
-            if (mysqli_query($connection, $sql)) {
-                echo "<div class='card mb-3' style='max-width: 540px;'>
+                 echo "<div class='card mb-3' style='max-width: 540px;'>
                 <div class='row no-gutters'>
                     <div class='col-md-4'>
                         <img src='" . $uimg . "' class='card-img' alt=''>
@@ -77,14 +82,12 @@
                     </div>
                 </div>
             </div>";
-            } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-            }
-
-            mysqli_close($connection);
             ?>
         </main>
     </div>
 </body>
-
 </html>
+<?php
+//close DB connection
+mysqli_close($connection);
+?>

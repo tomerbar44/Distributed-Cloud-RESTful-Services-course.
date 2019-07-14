@@ -1,3 +1,22 @@
+<?php
+//get data from our from and insert to the table
+include 'db.php';
+$uId = $_GET["id"];
+$uTrainingName = $_GET["training"];
+$udate = $_GET["date"];
+$utime = $_GET["time"];
+$uminutes = $_GET["minutes"];
+$ulevel = $_GET["level"];
+$uimg = "https://img.icons8.com/color/96/000000/personal-trainer.png";
+$query = "INSERT INTO tb_training_210 (traning_name, date, time,minutes,ID,level)
+            VALUES ('$uTrainingName','$udate','$utime','$uminutes','$uId','$ulevel')";
+
+$result = mysqli_query($connection, $query);
+if (!$result) {
+    die("DB query failed.");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -15,7 +34,7 @@
         <header>
             <section class="loginLine">
                 <a href="informationUser.php"><?php session_start();
-                 echo  $_SESSION["user_name"];?></a>
+                                                echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_user.php"></a>
@@ -44,18 +63,7 @@
 
         <main>
             <?php
-            include 'db.php';
-            $uId = $_GET["id"];
-            $uTrainingName = $_GET["training"];
-            $udate = $_GET["date"];
-            $utime = $_GET["time"];
-            $uminutes = $_GET["minutes"];
-            $ulevel = $_GET["level"];
-            $uimg="https://img.icons8.com/color/96/000000/personal-trainer.png";
-            $sql = "INSERT INTO tb_training_210 (traning_name, date, time,minutes,ID,level)
-            VALUES ('$uTrainingName','$udate','$utime','$uminutes','$uId','$ulevel')";
-            if (mysqli_query($connection, $sql)) {
-                echo "<div class='card mb-3' style='max-width: 540px;'>
+            echo "<div class='card mb-3' style='max-width: 540px;'>
                 <div class='row no-gutters'>
                     <div class='col-md-4'>
                         <img src='" . $uimg . "' class='card-img' alt=''>
@@ -69,19 +77,16 @@
                         <li class='list-group-item'>Minutes: " . $uminutes . "</li>
                         <li class='list-group-item'>Level: " . $ulevel . "</li>
                     </ul>
-                      
                     </div>
                 </div>
             </div>";
-            } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-            }
-
-            mysqli_close($connection);
             ?>
         </main>
 
     </div>
 </body>
-
 </html>
+<?php
+//close DB connection
+mysqli_close($connection);
+?>

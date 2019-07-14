@@ -13,7 +13,7 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="#"><?php session_start();
+                <a href="informationUser.php"><?php session_start();
                             echo  $_SESSION["user_name"]; ?>
                     <a href="#">Support</a>
             </section>

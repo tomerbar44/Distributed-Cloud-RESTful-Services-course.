@@ -45,8 +45,8 @@ if (!empty($_POST["loginMail"])) {
     <div id="wrapper">
         <header>
             <section class="loginLine"></section>
-            <a class="logo1" href="login.php"></a>
-            <a class="logo2" href="login.php"></a>
+            <a class="logo1" href="index.php"></a>
+            <a class="logo2" href="index.php"></a>
         </header>
 
         <div class="wrapperLogin">

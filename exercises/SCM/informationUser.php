@@ -35,7 +35,7 @@
                     <li class='list-group-item'>Phone: " . $_SESSION["user_phone"] . "</li>
                 </ul>
                 <div class='card-body'>
-                    <a href='login.php' class='card-link'>Exit</a>
+                    <a href='index.php' class='card-link'>Exit</a>
                     <a href='" . $uml . "' class='card-link'>Home Page</a>
                 </div>
             </div>" ?>
