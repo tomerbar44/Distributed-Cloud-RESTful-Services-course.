@@ -3,9 +3,16 @@
 include 'db.php';
 session_start();
 $Msg = '';
-$unum = $_GET["dnum"];
+$uTrainingNumber=$_GET["number"];
+$uTrainingName = $_GET["training"];
+$udate = $_GET["date"];
+$utime = $_GET["time"];
+$uminutes = $_GET["minutes"];
+$ulevel = $_GET["level"];
 $id = $_SESSION["user_id"];
-$query = "DELETE FROM tb_training_210 WHERE ID='$id' AND num_training='$unum'";
+$query = "UPDATE tb_training_210
+SET traning_name='$uTrainingName',date='$udate',time='$utime',minutes='$uminutes',level='$ulevel'
+WHERE ID='$id' AND num_training='$uTrainingNumber'";
 $result = mysqli_query($connection, $query);
 if ($connection->affected_rows) {
     $Msg = 'success';
@@ -57,13 +64,13 @@ if ($connection->affected_rows) {
             <li><a href="index_user.php">Home</a></li>
             <li><a href="trainingsLayout.php">Trainings</a></li>
             <li><a href="myTrainingsLayout.php">My trainings</a></li>
-            <li class="currentPage">Deleting training</li>
+            <li class="currentPage">Update training</li>
 
         </ul>
 
         <main>
             <?php
-                echo "<h3 class='confirmMessage'>Training number:".$unum." ". $Msg . " deleted !</h3>";
+                echo "<h3 class='confirmMessage'>Training number:".$uTrainingNumber." ". $Msg . " to update !</h3>";
             ?>
         </main>
 

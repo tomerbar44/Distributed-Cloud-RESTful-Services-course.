@@ -9,17 +9,14 @@ function deleteFacility() {
     var q = "DELETE FROM `tb_facilities_210` WHERE ID=";
     q = q + IdFacility;
     $.post('query.php', { query: q }, function(res) {
-        if (res == "NULL")
+        if (res == "NULL") {
             console.log('error occured');
-        else {
-
+            $("main").append('<h3 class="confirmMessage"> Not successfully deleted</h3>');
+        } else {
             $("main").append('<h3 class="confirmMessage"> Successfully deleted</h3>');
         }
     })
 }
-
-
-
 
 $(document).ready(function() {
     var q = "SELECT * FROM `tb_facilities_210`";
@@ -49,7 +46,6 @@ $(document).ready(function() {
                         '</div>' +
                         '</div>' +
                         '</div>');
-
                 }
 
 

@@ -2,11 +2,15 @@
 //get data from DB
 include 'db.php';
 session_start();
-$count = 1;
 $id = $_SESSION["user_id"];
-$query = "SELECT * FROM tb_training_210 WHERE ID=$id";
-$result = mysqli_query($connection, $query);
-if (!$result) {
+$query1 = "SELECT * FROM tb_training_210 WHERE ID=$id";
+$result1 = mysqli_query($connection, $query1);
+if (!$result1) {
+    die("DB query failed.");
+}
+$query2 = "SELECT * FROM tb_facilities_210";
+$result2 = mysqli_query($connection, $query2);
+if (!$result2) {
     die("DB query failed.");
 }
 ?>
@@ -55,6 +59,8 @@ if (!$result) {
                     <tr>
                         <th scope="col"><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">I'm late!</button></th>
                         <th scope="col"><button type="button" class="closeBtn" data-toggle="modal" data-target="#confirmationDelete"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete-forever.png"></button></th>
+                        <th scope="col"><button type="button" class="closeBtn" data-toggle="modal" data-target="#confirmationUpdate"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png"></button></th>
+                        <th scope="col">Training number</th>
                         <th scope="col">Training</th>
                         <th scope="col">Date</th>
                         <th scope="col">Time</th>
@@ -65,23 +71,24 @@ if (!$result) {
                 <tbody>
                     <?php
                     //use return data (if any)
-                    while ($row = mysqli_fetch_assoc($result)) { //returns standard array of results. keys are ints
+                    while ($row = mysqli_fetch_assoc($result1)) { //returns standard array of results. keys are ints
                         echo "<tr>
                     <td></td>
-                    <th scope='row'>" . $count . "</th>
+                    <td></td>
+                    <th scope='row'></th>
+                    <td>" . $row["num_training"] . "</td>
                     <td>" . $row["traning_name"] . "</td>
                     <td>" . $row["date"] . "</td>
                     <td>" . $row["time"] . "</td>
                     <td>" . $row["minutes"] . "</td>
                     <td>" . $row["level"] . "</td>
                     </tr>";
-                        $count++;
                     }
                     ?>
                 </tbody>
                 <?php
                 //release returned data
-                mysqli_free_result($result);
+                mysqli_free_result($result1);
                 ?>
             </table>
             <div class="modal fade" id="confirmationDelete">
@@ -90,15 +97,15 @@ if (!$result) {
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Select training time you want to delete</h4>
+                            <h4 class="modal-title">Select training number you want to delete</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <form action="deleteTrainingByTime.php" method="GET">
                             <div class="modal-body">
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Time</label>
+                                    <label class="col-sm-2 col-form-label">Number</label>
                                     <div class="col-sm-10">
-                                        <input type="time" class="form-control" name="dtime" required>
+                                        <input type="number" class="form-control" name="dnum" required>
                                     </div>
                                 </div>
                             </div>
@@ -109,6 +116,101 @@ if (!$result) {
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="confirmationUpdate">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Update your training</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <form action="updateTraining.php" method="GET">
+
+                            <div class="modal-body">
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Training number</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" name="number" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Training</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="training" name="training">
+                                            <?php
+                                            //use return data (if any)
+                                            while ($row = mysqli_fetch_assoc($result2)) { //returns standard array of results. keys are ints
+                                                //output data from each row
+                                                echo "<option>" . $row["name"] . "</option>";
+                                            }
+                                            ?>
+                                            <?php
+                                            //release returned data
+                                            mysqli_free_result($result2);
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Date</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" class="form-control" name="date" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Time</label>
+                                    <div class="col-sm-10">
+                                        <input type="time" class="form-control" name="time" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Minutes</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="minutes">
+                                            <option>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                            <option>40</option>
+                                            <option>50</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Level</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="level">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-success" value="Sumbit">
+                            </div>
+
+                        </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+
 
             <div class="modal fade" id="myModal">
                 <div class="modal-dialog">
@@ -116,29 +218,29 @@ if (!$result) {
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Select training time</h4>
+                            <h4 class="modal-title">Select date, time and level</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
                         <!-- Modal body -->
-                        <form action="trainingsForLate.php" method="GET">
+                        <form action="#" method="GET">
                             <div class="modal-body">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Date</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" name="date" required>
+                                        <input type="date" class="form-control" id="dateForLate" name="date" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Time</label>
                                     <div class="col-sm-10">
-                                        <input type="time" class="form-control" name="time" required>
+                                        <input type="time" class="form-control" id="timeForLate" name="time" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Level</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="level" required>
+                                        <select class="form-control" id="levelForLate" name="level" required>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -151,9 +253,10 @@ if (!$result) {
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                                <input type="submit" class="btn btn-success" value="Sumbit">
+                                <input type="submit" class="btn btn-success" id="confirmButton" value="Sumbit">
                             </div>
-                        </form>
+                            </form>
+                     
 
                     </div>
                 </div>
@@ -165,6 +268,7 @@ if (!$result) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="includes/jsTrainingForLate.js "></script>
 
 </body>
 
