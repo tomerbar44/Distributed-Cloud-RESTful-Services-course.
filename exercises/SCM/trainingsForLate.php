@@ -1,3 +1,9 @@
+<?php
+$udatelate = $_GET["dateforlate"];
+$utimelate = $_GET["timeforlate"];
+$ulevelate = $_GET["levelforlate"];
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -39,11 +45,16 @@
             <li class="currentPage">Training by time</li>
         </ul>
         <main>
-            <a href="#" class="list-group-item list-group-item-action">Trainings that come from JSON</a>
-            <a href="#" class="list-group-item list-group-item-action">Trainings that come from JSON</a>
-            <a href="#" class="list-group-item list-group-item-action">Trainings that come from JSON</a>
+        <?php
+            echo "<span id='getDate'>".$udatelate." </span>
+            <span id='getTime'>".$utimelate." </span>
+            <span id='getLevel'>".$ulevelate." </span>";
+            ?>
+           
         </main>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="includes/jsTrainingForLate.js"></script>
 </body>
 
 </html>

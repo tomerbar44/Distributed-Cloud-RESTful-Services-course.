@@ -197,21 +197,13 @@ if (!$result2) {
                                 </div>
 
                             </div>
-
-
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-success" value="Sumbit">
                             </div>
-
                         </form>
-
-
-
                     </div>
                 </div>
             </div>
-
-
             <div class="modal fade" id="myModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -223,24 +215,24 @@ if (!$result2) {
                         </div>
 
                         <!-- Modal body -->
-                        <form action="#" method="GET">
+                        <form action="trainingsForLate.php" method="GET">
                             <div class="modal-body">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Date</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="dateForLate" name="date" required>
+                                        <input type="date" class="form-control" name="dateforlate" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Time</label>
                                     <div class="col-sm-10">
-                                        <input type="time" class="form-control" id="timeForLate" name="time" required>
+                                        <input type="time" class="form-control" name="timeforlate" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Level</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" id="levelForLate" name="level" required>
+                                        <select class="form-control" name="levelforlate" required>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -253,7 +245,7 @@ if (!$result2) {
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                                <input type="submit" class="btn btn-success" id="confirmButton" value="Sumbit">
+                                <input type="submit" class="btn btn-success" value="Sumbit">
                             </div>
                             </form>
                      
@@ -264,11 +256,10 @@ if (!$result2) {
 
         </main>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="includes/jsTrainingForLate.js "></script>
+
 
 </body>
 

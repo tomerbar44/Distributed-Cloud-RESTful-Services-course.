@@ -257,6 +257,10 @@
        width: 50%;
        padding: 10px 16px;
    }
+   
+   #trainingsForLateLayout span {
+       display: none;
+   }
    /*-------Media Query-------*/
    
    @media only screen and (max-width: 481px) {

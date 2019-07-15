@@ -1,34 +1,15 @@
 $(document).ready(function() {
-
-    function trainingFromJson() {
-        var json_data = []
-        $.getJSON("data/trainingDATA.json", function(data) {
-            console.log(data)
-            json_data = data
-            for (var row of data) {
-
-                console.log($('#timeForLate').val());
-                console.log($('#dateForLate').val());
-                console.log($('#levelForLate').val());
-
-                if (row.time == $('#timeForLate').val() && row.date == $('#dateForLate').val() && row.level == $('#levelForLate').val())
-                    var table_row = $(
-                        '<tr>' +
-                        '<td></td>' +
-                        '<td></td>' +
-                        '<th scope="row"></th>' +
-                        '<td>' + row.num_training + '</td>' +
-                        '<td>' + row.traning_name + '</td>' +
-                        '<td>' + row.date + '</td>' +
-                        '<td>' + row.time + '</td>' +
-                        '<td>' + row.minutes + '</td>' +
-                        '<td>' + row.level + '</td>' +
-                        '</tr>'
-                    )
-                $(table_row).css("background-color", "yellow");
-                $('tbody').append(table_row)
+    var json_data = []
+    $.getJSON("data/trainingDATA.json", function(data) {
+        console.log(data)
+        json_data = data
+        for (var row of data) {
+            if (parseInt($('#getDate').html()) == parseInt(row.date) && parseInt($('#getTime').html()) == parseInt(row.time) && parseInt($('#getLevel').html()) == parseInt(row.level)) {
+                var trainingLink = $(
+                    '<a href="#" class="list-group-item list-group-item-action">' + row.traning_name + ' : ' + row.minutes + 'min</a>')
+                $('main').append(trainingLink)
             }
-        });
-    }
-    document.getElementById('confirmButton').onclick = trainingFromJson();
+        }
+    });
+
 });
