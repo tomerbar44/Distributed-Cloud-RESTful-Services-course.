@@ -264,7 +264,9 @@
        padding: 10px 16px;
    }
    
-   #trainingsForLateLayout span {
+   #trainingsForLateLayout #getDate,
+   #trainingsForLateLayout #getTime,
+   #trainingsForLateLayout #getLevel {
        display: none;
    }
    /*-------Media Query-------*/
