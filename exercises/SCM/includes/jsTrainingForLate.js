@@ -13,7 +13,7 @@ $(document).ready(function() {
             }
         }
         if (flag == 0) {
-            $("main").append('<h3 class="confirmMessage"><img src="https://img.icons8.com/color/48/000000/high-importance.png" alt=" "> Not successfully to find training</h3>');
+            $("main").append('<img src="https://img.icons8.com/color/48/000000/high-importance.png" alt=" "><span class="confirmMessage"> Not successfully to find training</span>');
         }
     });
 

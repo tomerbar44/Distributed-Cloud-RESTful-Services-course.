@@ -10,10 +10,10 @@ function deleteFacility() {
     q = q + IdFacility;
     $.post('query.php', { query: q }, function(res) {
         if (res == "NULL") {
-            console.log('error occured');
-            $("main").append('<h3 class="confirmMessage"><img src="https://img.icons8.com/color/48/000000/high-importance.png" alt=" "> Not successfully deleted</h3>');
+            $("main").append('<img src="https://img.icons8.com/color/48/000000/high-importance.png" alt=" "><span class="confirmMessage"> Not successfully to delete</span>');
         } else {
-            $("main").append('<h3 class="confirmMessage"><img src="https://img.icons8.com/color/48/000000/checked.png" alt=" "> Successfully deleted</h3>');
+            $("main").append('<img src="https://img.icons8.com/color/48/000000/checked.png" alt=" "><span class="confirmMessage"> Successfully deleted</span>');
+
         }
     })
 }

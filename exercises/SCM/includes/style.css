@@ -53,6 +53,7 @@
    
    .confirmMessage {
        padding: 16px;
+       font-size: 26px;
        font-family: 'Rokkitt', serif;
    }
    /* ------Bredcrumb------ */
