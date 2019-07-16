@@ -1,4 +1,5 @@
 <?php
+ session_start();
 //get data from our from and insert to the table
 include 'db.php';
 $uname = $_GET["name"];
@@ -25,6 +26,7 @@ if (!$result) {
 
 <head>
     <title>SCM</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="includes/style.css">
 </head>
@@ -33,8 +35,9 @@ if (!$result) {
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="informationUser.php"><?php session_start();
-                            echo  $_SESSION["user_name"]; ?></a>
+                <a href="informationUser.php"><?php 
+                                                if (isset($_SESSION["user_name"]))
+                                                    echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_admin.php"></a>
@@ -64,7 +67,7 @@ if (!$result) {
         </ul>
         <main>
             <?php
-                 echo "<div class='card mb-3' style='max-width: 540px;'>
+            echo "<div class='card mb-3' style='max-width: 540px;'>
                 <div class='row no-gutters'>
                     <div class='col-md-4'>
                         <img src='" . $uimg . "' class='card-img' alt=''>
@@ -86,6 +89,7 @@ if (!$result) {
         </main>
     </div>
 </body>
+
 </html>
 <?php
 //close DB connection

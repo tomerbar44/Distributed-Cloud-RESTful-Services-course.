@@ -1,4 +1,5 @@
 <?php
+session_start();
 //get data from DB
 include 'db.php';
 $query1 = "SELECT * FROM tb_facilities_210 WHERE kind=1";
@@ -27,8 +28,9 @@ if (!$result2) {
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="informationUser.php"><?php session_start();
-                 echo  $_SESSION["user_name"];?></a>
+                <a href="informationUser.php"><?php
+                                                if (isset($_SESSION["user_name"]))
+                                                    echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_admin.php"></a>
@@ -55,19 +57,19 @@ if (!$result2) {
             <li class="currentPage">Facilities</li>
         </ul>
         <main>
-        <div class="aerobic">
+            <div class="aerobic">
                 <?php
                 //use return data (if any)
-                while ($row = mysqli_fetch_assoc($result1)) { //returns standard array of results. keys are ints
-                    echo "<a class='facilitieLink' href='facilityDetailsLayout.php?". $row["ID"]."'><img src='".$row["img"] ."' alt=' '>".$row["name"]."</a>";
+                while ($row = mysqli_fetch_assoc($result1)) { //returns standard array of results.
+                    echo "<a class='facilitieLink' href='facilityDetailsLayout.php?" . $row["ID"] . "'><img src='" . $row["img"] . "' alt=' '>" . $row["name"] . "</a>";
                 }
                 ?>
             </div>
             <div class="power">
                 <?php
                 //use return data (if any)
-                while ($row = mysqli_fetch_assoc($result2)) { //returns standard array of results. keys are ints
-                    echo "<a class='facilitieLink' href='facilityDetailsLayout.php?". $row["ID"]."'><img src='".$row["img"] ."' alt=' '>".$row["name"]."</a>";
+                while ($row = mysqli_fetch_assoc($result2)) { //returns standard array of results. 
+                    echo "<a class='facilitieLink' href='facilityDetailsLayout.php?" . $row["ID"] . "'><img src='" . $row["img"] . "' alt=' '>" . $row["name"] . "</a>";
                 }
                 ?>
             </div>
@@ -79,13 +81,20 @@ if (!$result2) {
         </main>
         <aside>
             <img src="images/filter_icon.png" alt="">
-            <span style="cursor:pointer"> <h3 id="filterAll">All</h3></span>
-            <span style="cursor:pointer"> <h3 id="filterPower">Power</h3></span>
-            <span style="cursor:pointer"><h3 id="filterAerobic">Aerobic</h3></span>
+            <span style="cursor:pointer">
+                <h3 id="filterAll">All</h3>
+            </span>
+            <span style="cursor:pointer">
+                <h3 id="filterPower">Power</h3>
+            </span>
+            <span style="cursor:pointer">
+                <h3 id="filterAerobic">Aerobic</h3>
+            </span>
         </aside>
     </div>
     <script src="includes/main.js"></script>
 </body>
+
 </html>
 <?php
 //close DB connection

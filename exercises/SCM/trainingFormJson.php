@@ -1,12 +1,4 @@
-<?php
-session_start();
-//get data from DB
-include 'db.php';
-$query = "SELECT * FROM tb_facilities_210";
-$result = mysqli_query($connection, $query);
-if (!$result) {
-    die("DB query failed.");
-}
+<?php session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,6 +34,7 @@ if (!$result) {
         </nav>
         <ul class="breadcrumb">
             <li><a href="index_user.php">Home</a></li>
+            <li><a href="myTrainingsLayout.php">My trainings</a></li>
             <li class="currentPage">Add a training</li>
         </ul>
         <main>
@@ -56,55 +49,31 @@ if (!$result) {
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Training</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="training">
-                            <?php
-                            //use return data (if any)
-                            while ($row = mysqli_fetch_assoc($result)) { //returns standard array of results.
-                                //output data from each row
-                                echo "<option>" . $row["name"] . "</option>";
-                            }
-                            ?>
-                            <?php
-                            //release returned data
-                            mysqli_free_result($result);
-                            ?>
-                        </select>
+                    <input type="text" readonly class="form-control-plaintext" name="training" id="staticTraining" value="">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" name="date" required>
+                        <input type="date" readonly class="form-control-plaintext" name="date" id="staticDate" value="">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Time</label>
                     <div class="col-sm-10">
-                        <input type="time" class="form-control" name="time" required>
+                        <input type="time" readonly class="form-control-plaintext" name="time" id="staticTime" value="">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Minutes</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="minutes">
-                            <option>10</option>
-                            <option>20</option>
-                            <option>30</option>
-                            <option>40</option>
-                            <option>50</option>
-                        </select>
+                        <input type="number" readonly class="form-control-plaintext" name="minutes" id="staticMinutes" value="">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Level</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="level">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                        <input type="number" readonly class="form-control-plaintext" name="level" id="staticLevel" value="">
                     </div>
                 </div>
                 <input type="submit" class="btn btn-dark" value="Sumbit">
@@ -112,10 +81,8 @@ if (!$result) {
             </form>
         </main>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="includes/jsDynamicForm.js"></script>
 </body>
 
 </html>
-<?php
-//close DB connection
-mysqli_close($connection);
-?>

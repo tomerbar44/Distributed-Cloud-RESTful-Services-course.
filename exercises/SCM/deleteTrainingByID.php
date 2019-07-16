@@ -1,18 +1,21 @@
 <?php
-//get data from our from and insert to the table
 include 'db.php';
 session_start();
 $Msg = '';
+$imgUrl='';
 $unum = $_GET["dnum"];
-$id = $_SESSION["user_id"];
+if (isset($_SESSION["user_id"])) {
+    $id = $_SESSION["user_id"];
+}
 $query = "DELETE FROM tb_training_210 WHERE ID='$id' AND num_training='$unum'";
 $result = mysqli_query($connection, $query);
 if ($connection->affected_rows) {
-    $Msg = 'success';
+    $Msg = 'successfully deleted';
+    $imgUrl="https://img.icons8.com/color/48/000000/checked.png";
 } else {
-    $Msg = 'not success';
+    $Msg = 'does not exist';
+    $imgUrl="https://img.icons8.com/color/48/000000/high-importance.png";
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -21,54 +24,46 @@ if ($connection->affected_rows) {
 <head>
     <title>SCM</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="includes/style.css">
 </head>
 
-<body id="formLayout">
+<body id="detailsSaveLayout">
     <div id="wrapper">
 
         <header>
             <section class="loginLine">
                 <a href="informationUser.php"><?php
-                                                echo  $_SESSION["user_name"]; ?></a>
+                                                if (isset($_SESSION["user_name"]))
+                                                    echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_user.php"></a>
             <a class="logo2" href="index_user.php"></a>
         </header>
-
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="index_user.php">Home</a>
+                    <a class="nav-link active" href="index_user.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="trainingsLayout.php">Trainings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Facilities</a>
+                    <a class="nav-link" href="trainingsLayout.php">Facilities</a>
                 </li>
             </ul>
         </nav>
-
         <ul class="breadcrumb">
             <li><a href="index_user.php">Home</a></li>
-            <li><a href="trainingsLayout.php">Trainings</a></li>
             <li><a href="myTrainingsLayout.php">My trainings</a></li>
             <li class="currentPage">Deleting training</li>
 
         </ul>
-
         <main>
+        <img src='" . $uimg . "' class='card-img' alt=''>
             <?php
-                echo "<h3 class='confirmMessage'>Training number:".$unum." ". $Msg . " deleted !</h3>";
+            echo "<h3 class='confirmMessage'><img src='".$imgUrl."' alt=' '> Training number:" . $unum . " " . $Msg . "</h3>";
             ?>
         </main>
-
-
-
     </div>
 </body>
 

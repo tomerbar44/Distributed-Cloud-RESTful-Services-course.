@@ -1,6 +1,5 @@
 <?php
 include 'db.php';
-include "config.php";
 session_start();
 if (!empty($_POST["loginMail"])) {
     $query  = "SELECT * FROM tb_users_210 WHERE email = '"
@@ -22,9 +21,9 @@ if (!empty($_POST["loginMail"])) {
         $_SESSION["user_kind"] = $row['kind_admin'];
         $_SESSION["user_img"] = $row['img'];
         if ($_SESSION["user_kind"] == 0) {
-            header('Location: ' . URL . 'index_user.php?' . $_SESSION["user_id"]);
+            header('Location: index_user.php?' . $_SESSION["user_id"]);
         } else {
-            header('Location: ' . URL . 'index_admin.php?' . $_SESSION["user_id"]);
+            header('Location: index_admin.php?' . $_SESSION["user_id"]);
         }
     } else {
         $message = "Invalid Username or Password!";
@@ -51,7 +50,7 @@ if (!empty($_POST["loginMail"])) {
 
         <div class="wrapperLogin">
             <h1>Hello, Enter to SCM </h1>
-            <form action="#" method="post" id="frm">
+            <form action="#" method="post">
                 <div class="form-group">
                     <label for="loginMail">Email:</label><input type="email" id="loginMail" name="loginMail" class="form-control" required>
                 </div>

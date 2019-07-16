@@ -1,9 +1,12 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>SCM</title>
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="includes/style.css">
 </head>
@@ -12,8 +15,9 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="informationUser.php"><?php session_start();
-                                                echo  $_SESSION["user_name"]; ?></a>
+                <a href="informationUser.php"><?php
+                                                if (isset($_SESSION["user_name"]))
+                                                    echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_admin.php"></a>
@@ -42,7 +46,7 @@
         </ul>
         <main>
             <button type="button" class="closeBtn" data-toggle="modal" data-target="#confirmation"><img src="https://img.icons8.com/material-rounded/24/000000/delete-sign.png"></button>
-            <button type="button" class="closeBtn" data-toggle="modal" data-target="#update"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png"></button>
+            <button type="button" class="closeBtn" data-toggle="modal" data-target="#update" id="updateButton"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png"></button>
             <div class="modal fade" id="confirmation">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -65,7 +69,7 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Enter new details:</h4>
+                            <h4 class="modal-title">Enter new details</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
@@ -73,21 +77,21 @@
                         <form action="updateFacility.php" method="GET">
                             <div class="modal-body">
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Name</label>
+                                    <label class="col-sm-2 col-form-label">Code</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="name" name="name">
+                                        <input type="text" readonly class="form-control-plaintext" name="code" id="staticCode" value="">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Code</label>
+                                    <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="code" name="code">
+                                        <input type="text" class="form-control" name="name" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Kind</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" id="Kind" name="kind">
+                                        <select class="form-control" name="kind" required>
                                             <option>aerobic</option>
                                             <option>power</option>
                                         </select>
@@ -96,13 +100,13 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Provider</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="provider" name="provider">
+                                        <input type="text" class="form-control" name="provider" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Date</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="date" name="date">
+                                        <input type="date" class="form-control" name="date" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -114,7 +118,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Img url</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="img" name="img">
+                                        <input type="text" class="form-control" name="img">
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +134,7 @@
             </div>
         </main>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

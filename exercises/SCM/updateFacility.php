@@ -1,7 +1,9 @@
 <?php
+ session_start();
 //get data from our from and insert to the table
 include 'db.php';
 $Msg = '';
+$imgUrl='';
 $uname = $_GET["name"];
 $ucode = $_GET["code"];
 if ($_GET["kind"] == "aerobic") {
@@ -18,9 +20,11 @@ SET name='$uname',provider='$upro',date='$udate',comment='$ucomm',kind='$unum',i
 WHERE ID='$ucode'";
 $result = mysqli_query($connection, $query);
 if ($connection->affected_rows) {
-    $Msg = 'Success';
+    $Msg = 'successfully update';
+    $imgUrl="https://img.icons8.com/color/48/000000/checked.png";
 } else {
-    $Msg = 'Not success';
+    $Msg = 'does not exist';
+    $imgUrl="https://img.icons8.com/color/48/000000/high-importance.png";
 }
 ?>
 <!DOCTYPE html>
@@ -28,16 +32,20 @@ if ($connection->affected_rows) {
 
 <head>
     <title>SCM</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="includes/style.css">
+    
 </head>
 
 <body id="detailsSaveLayout">
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="informationUser.php"><?php session_start();
-                                                echo  $_SESSION["user_name"]; ?></a>
+                <a href="informationUser.php"><?php 
+                                                if (isset($_SESSION["user_name"]))
+                                                    echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_admin.php"></a>
@@ -66,7 +74,7 @@ if ($connection->affected_rows) {
         </ul>
         <main>
             <?php
-           echo "<h3 class='confirmMessage'>".$Msg . " to update facility number: ".$ucode." !</h3>";
+           echo "<h3 class='confirmMessage'><img src='".$imgUrl."' alt=' '> Facility number:".$ucode." ".$Msg." </h3>";
             ?>
         </main>
     </div>

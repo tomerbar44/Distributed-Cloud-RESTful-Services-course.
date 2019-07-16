@@ -3,6 +3,7 @@
 include 'db.php';
 session_start();
 $Msg = '';
+$imgUrl='';
 $uTrainingNumber=$_GET["number"];
 $uTrainingName = $_GET["training"];
 $udate = $_GET["date"];
@@ -15,9 +16,11 @@ SET traning_name='$uTrainingName',date='$udate',time='$utime',minutes='$uminutes
 WHERE ID='$id' AND num_training='$uTrainingNumber'";
 $result = mysqli_query($connection, $query);
 if ($connection->affected_rows) {
-    $Msg = 'success';
+    $Msg = 'successfully update';
+    $imgUrl="https://img.icons8.com/color/48/000000/checked.png";
 } else {
-    $Msg = 'not success';
+    $Msg = 'does not exist';
+    $imgUrl="https://img.icons8.com/color/48/000000/high-importance.png";
 }
 
 ?>
@@ -28,12 +31,12 @@ if ($connection->affected_rows) {
 <head>
     <title>SCM</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="includes/style.css">
 </head>
 
-<body id="formLayout">
+<body id="detailsSaveLayout">
     <div id="wrapper">
 
         <header>
@@ -49,20 +52,16 @@ if ($connection->affected_rows) {
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="index_user.php">Home</a>
+                    <a class="nav-link active" href="index_user.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="trainingsLayout.php">Trainings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Facilities</a>
+                    <a class="nav-link" href="trainingsLayout.php">Facilities</a>
                 </li>
             </ul>
         </nav>
 
         <ul class="breadcrumb">
             <li><a href="index_user.php">Home</a></li>
-            <li><a href="trainingsLayout.php">Trainings</a></li>
             <li><a href="myTrainingsLayout.php">My trainings</a></li>
             <li class="currentPage">Update training</li>
 
@@ -70,12 +69,9 @@ if ($connection->affected_rows) {
 
         <main>
             <?php
-                echo "<h3 class='confirmMessage'>Training number:".$uTrainingNumber." ". $Msg . " to update !</h3>";
+                echo "<h3 class='confirmMessage'><img src='".$imgUrl."' alt=' '> Training number:".$uTrainingNumber." ". $Msg . "</h3>";
             ?>
         </main>
-
-
-
     </div>
 </body>
 

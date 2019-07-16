@@ -1,3 +1,10 @@
+<?php session_start();
+if($_SESSION["user_kind"]==0){
+    $uml="index_user.php";
+}else{
+    $uml="index_admin.php";
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,16 +19,13 @@
     <div id="wrapper">
         <header>
             <section class="loginLine"></section>
-            <a class="logo1" href="informationUser.php"></a>
-            <a class="logo2" href="informationUser.php"></a>
+            <?php echo"
+            <a class='logo1' href='".$uml."'></a>
+            <a class='logo2' href='".$uml."'></a>";
+            ?>
         </header>
         <main>
-            <?php session_start();
-            if($_SESSION["user_kind"]==0){
-                $uml="index_user.php";
-            }else{
-                $uml="index_admin.php";
-            }
+            <?php 
             echo
                 "<div class='card' style='width: 18rem;'>
                 <img src=" . $_SESSION["user_img"] . " class='card-img-top' alt='...'>

@@ -1,12 +1,12 @@
 $("form").submit(function(event) {
     $("span").css("color", "red");
-    if ($("#name").val() == '') {
-        $("span").text("Please fill name!").show().fadeOut(1000);
+    if ($("#code").val() == '') {
+        $("span").text("Please fill code!").show().fadeOut(1000);
         event.preventDefault();
         return;
 
-    } else if ($("#code").val() == '') {
-        $("span").text("Please fill code!").show().fadeOut(1000);
+    } else if ($("#name").val() == '') {
+        $("span").text("Please fill name!").show().fadeOut(1000);
         event.preventDefault();
         return;
 

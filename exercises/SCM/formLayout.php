@@ -1,10 +1,11 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>SCM</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="includes/style.css">
 </head>
@@ -13,8 +14,9 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="informationUser.php"><?php session_start();
-                            echo  $_SESSION["user_name"]; ?>
+                <a href="informationUser.php"><?php 
+                                                if (isset($_SESSION["user_name"]))
+                                                    echo  $_SESSION["user_name"]; ?></a>
                     <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_admin.php"></a>
@@ -43,16 +45,16 @@
         </ul>
         <main>
             <form action="get_params.php" method="GET">
+            <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Code</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="code" name="code">
+                    </div>
+                </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="name" name="name">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Code</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="code" name="code">
                     </div>
                 </div>
                 <div class="form-group row">

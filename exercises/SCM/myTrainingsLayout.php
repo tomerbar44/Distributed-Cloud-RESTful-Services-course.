@@ -29,7 +29,8 @@ if (!$result2) {
         <header>
             <section class="loginLine">
                 <a href="informationUser.php"><?php
-                                                echo  $_SESSION["user_name"]; ?></a>
+                                                if (isset($_SESSION["user_name"]))
+                                                    echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_user.php"></a>
@@ -38,43 +39,37 @@ if (!$result2) {
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="index_user.php">Home</a>
+                    <a class="nav-link active" href="index_user.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="trainingsLayout.php">Trainings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Facilities</a>
+                    <a class="nav-link" href="trainingsLayout.php">Facilities</a>
                 </li>
             </ul>
         </nav>
         <ul class="breadcrumb">
             <li><a href="index_user.php">Home</a></li>
-            <li><a href="trainingsLayout.php">Trainings</a></li>
             <li class="currentPage">My trainings</li>
         </ul>
         <main>
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col"><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">I'm late!</button></th>
-                        <th scope="col"><button type="button" class="closeBtn" data-toggle="modal" data-target="#confirmationDelete"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete-forever.png"></button></th>
-                        <th scope="col"><button type="button" class="closeBtn" data-toggle="modal" data-target="#confirmationUpdate"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png"></button></th>
+                        <th scope="col"><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#IamLate">I'm late!</button></th>
                         <th scope="col">Training number</th>
                         <th scope="col">Training</th>
                         <th scope="col">Date</th>
                         <th scope="col">Time</th>
                         <th scope="col">Minutes</th>
                         <th scope="col">Level</th>
+                        <th scope="col"><button type="button" class="closeBtn" data-toggle="modal" data-target="#confirmationDelete"><img src="https://img.icons8.com/ios-glyphs/30/000000/delete-forever.png"></button></th>
+                        <th scope="col"><button type="button" class="closeBtn" data-toggle="modal" data-target="#confirmationUpdate"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png"></button></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     //use return data (if any)
-                    while ($row = mysqli_fetch_assoc($result1)) { //returns standard array of results. keys are ints
+                    while ($row = mysqli_fetch_assoc($result1)) { //returns standard array of results. 
                         echo "<tr>
-                    <td></td>
-                    <td></td>
                     <th scope='row'></th>
                     <td>" . $row["num_training"] . "</td>
                     <td>" . $row["traning_name"] . "</td>
@@ -82,6 +77,8 @@ if (!$result2) {
                     <td>" . $row["time"] . "</td>
                     <td>" . $row["minutes"] . "</td>
                     <td>" . $row["level"] . "</td>
+                    <td></td>
+                    <td></td>
                     </tr>";
                     }
                     ?>
@@ -91,16 +88,15 @@ if (!$result2) {
                 mysqli_free_result($result1);
                 ?>
             </table>
+
             <div class="modal fade" id="confirmationDelete">
                 <div class="modal-dialog">
                     <div class="modal-content">
-
-                        <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title">Select training number you want to delete</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <form action="deleteTrainingByTime.php" method="GET">
+                        <form action="deleteTrainingByID.php" method="GET">
                             <div class="modal-body">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Number</label>
@@ -116,11 +112,10 @@ if (!$result2) {
                     </div>
                 </div>
             </div>
+
             <div class="modal fade" id="confirmationUpdate">
                 <div class="modal-dialog">
                     <div class="modal-content">
-
-                        <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title">Update your training</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -143,7 +138,7 @@ if (!$result2) {
                                         <select class="form-control" id="training" name="training">
                                             <?php
                                             //use return data (if any)
-                                            while ($row = mysqli_fetch_assoc($result2)) { //returns standard array of results. keys are ints
+                                            while ($row = mysqli_fetch_assoc($result2)) { //returns standard array of results. 
                                                 //output data from each row
                                                 echo "<option>" . $row["name"] . "</option>";
                                             }
@@ -204,7 +199,7 @@ if (!$result2) {
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="myModal">
+            <div class="modal fade" id="IamLate">
                 <div class="modal-dialog">
                     <div class="modal-content">
 
@@ -247,8 +242,8 @@ if (!$result2) {
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-success" value="Sumbit">
                             </div>
-                            </form>
-                     
+                        </form>
+
 
                     </div>
                 </div>

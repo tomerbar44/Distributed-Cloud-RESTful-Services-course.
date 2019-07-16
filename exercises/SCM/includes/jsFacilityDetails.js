@@ -11,11 +11,16 @@ function deleteFacility() {
     $.post('query.php', { query: q }, function(res) {
         if (res == "NULL") {
             console.log('error occured');
-            $("main").append('<h3 class="confirmMessage"> Not successfully deleted</h3>');
+            $("main").append('<h3 class="confirmMessage"><img src="https://img.icons8.com/color/48/000000/high-importance.png" alt=" "> Not successfully deleted</h3>');
         } else {
-            $("main").append('<h3 class="confirmMessage"> Successfully deleted</h3>');
+            $("main").append('<h3 class="confirmMessage"><img src="https://img.icons8.com/color/48/000000/checked.png" alt=" "> Successfully deleted</h3>');
         }
     })
+}
+
+function insertIDtoForm() {
+    var IdFacility = getID();
+    $("#staticCode").val(IdFacility);
 }
 
 $(document).ready(function() {
@@ -24,8 +29,10 @@ $(document).ready(function() {
         if (res == "NULL")
             console.log('error occured');
         else {
+
             var IdFacility = getID();
             var json = JSON.parse(res);
+            console.log(json);
             $.each(json, function(i, obj) {
                 if (obj.ID === IdFacility) {
                     $("main").append(
@@ -57,3 +64,4 @@ $(document).ready(function() {
 });
 // triger for delete facility
 document.getElementById('deleteButton').onclick = deleteFacility;
+document.getElementById('updateButton').onclick = insertIDtoForm;

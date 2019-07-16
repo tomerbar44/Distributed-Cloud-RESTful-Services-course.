@@ -1,4 +1,5 @@
 <?php
+session_start();
 //get data from DB
 include 'db.php';
 $query1 = "SELECT * FROM tb_facilities_210 WHERE kind=1";
@@ -27,8 +28,9 @@ if (!$result2) {
     <div id="wrapper">
         <header>
             <section class="loginLine">
-                <a href="informationUser.php"><?php session_start();
-                            echo  $_SESSION["user_name"]; ?></a>
+                <a href="informationUser.php"><?php 
+                                                if (isset($_SESSION["user_name"]))
+                                                    echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_user"></a>
@@ -40,16 +42,13 @@ if (!$result2) {
                     <a class="nav-link" href="index_user.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="trainingsLayout.php">Trainings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Facilities</a>
+                    <a class="nav-link active" href="trainingsLayout.php">Facilities</a>
                 </li>
             </ul>
         </nav>
         <ul class="breadcrumb">
             <li><a href="index_user.php">Home</a></li>
-            <li><a href="trainingsLayout.php">Trainings</a></li>
+            <li><a href="trainingsLayout.php">Facilities</a></li>
             <li class="currentPage">Gym</li>
         </ul>
         <main>

@@ -1,3 +1,5 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,9 +14,9 @@
     <div id="wrapper">
         <header>
             <section class="loginLine">
-            <a href="informationUser.php"><?php session_start();
-                if(isset( $_SESSION["user_name"]))
-                    echo  $_SESSION["user_name"];?></a>
+                <a href="informationUser.php"><?php 
+                                                if (isset($_SESSION["user_name"]))
+                                                    echo  $_SESSION["user_name"]; ?></a>
                 <a href="#">Support</a>
             </section>
             <a class="logo1" href="index_admin.php"></a>
@@ -58,7 +60,7 @@
             <p>Boxing training is canceled today</p>
         </footer>
     </div>
-   
+
 </body>
 
 </html>
