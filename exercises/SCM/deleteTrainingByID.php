@@ -60,7 +60,7 @@ if ($connection->affected_rows) {
         </ul>
         <main>
             <?php
-            echo "<img src='".$imgUrl."' alt=' '><span class='confirmMessage'> Training number:" . $unum . " " . $Msg . "</span>";
+            echo "<span class='confirmMessage'><img src='".$imgUrl."' alt=' '> Training number:" . $unum . " " . $Msg . "</span>";
             ?>
         </main>
     </div>

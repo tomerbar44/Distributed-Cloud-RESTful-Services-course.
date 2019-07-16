@@ -74,7 +74,7 @@ if ($connection->affected_rows) {
         </ul>
         <main>
             <?php
-            echo "<img src='" . $imgUrl . "' alt=' '><span class='confirmMessage'> Facility number:" . $unum . " " . $Msg . "</span>";
+            echo "<span class='confirmMessage'><img src='" . $imgUrl . "' alt=' '> Facility number:" . $ucode . " " . $Msg . "</span>";
             ?>
         </main>
     </div>
