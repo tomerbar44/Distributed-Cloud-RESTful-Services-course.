@@ -60,7 +60,7 @@ img {
     text-align: center;
 }
 
-.imgesArea {
+.imagesArea {
     overflow-x: scroll;
     display: flex;
 }
