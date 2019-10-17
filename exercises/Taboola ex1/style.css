@@ -42,13 +42,16 @@ h1 {
     text-decoration: none;
 }
 
+
+/* Limit for 3 lines */
+
 .item .desc {
     flex-grow: 1;
     max-height: 60px;
     line-height: 20px;
     overflow: hidden;
     font-weight: bold;
-    text-align: right;
+    text-align: justify;
 }
 
 .desc a {

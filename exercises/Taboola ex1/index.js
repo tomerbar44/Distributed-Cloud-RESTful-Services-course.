@@ -3,14 +3,10 @@ const url =
 
 const container = document.getElementById('list');
 
-function fetchData() {
-    return fetch(url)
-        .then(function(res) {
-            return res.json();
-        })
-        .then(function(data) {
-            drawItems(data.list, container);
-        });
+async function fetchData() {
+    const res = await fetch(url);
+    const data = await res.json();
+    drawItems(data.list, container);
 }
 
 function drawItems(items, target) {
