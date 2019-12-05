@@ -27,8 +27,11 @@ const server = http.createServer((req, res) => {
                     user: body.user,
                     cards: body.cards
                 };
-                invites[newInvite.id] = newInvite;
                 cards -= newInvite.cards;
+                if (cards < c)
+                    invites[newInvite.id] = newInvite;
+
+
                 console.log("invites", invites);
                 res.end(JSON.stringify(newInvite));
             });
@@ -51,10 +54,31 @@ const server = http.createServer((req, res) => {
             req.on("end", () => {
                 body = JSON.parse(body);
                 console.log("id:", url.parse(req.url, true).query.id);
-
-                res.end("Invitation deleted");
+                let idToUpdate = url.parse(req.url, true).query.id;
+                cards += invites[idToUpdate].cards;
+                invites[idToUpdate].cards = body.cards;
+                invites[idToUpdate].user = body.user;
+                invites[idToUpdate].moment = new Date();
+                cards -= invites[idToUpdate].cards;
+                res.end("Invitation updated");
                 console.log("invites", invites);
                 console.log("cards", cards);
+            });
+        }
+        if (url.parse(req.url, true).pathname === "/showAll") {
+            req.on("end", () => {
+                //body = JSON.parse(body);
+                res.end(JSON.stringify(invites));
+            });
+        }
+        if (url.parse(req.url, true).pathname === "/deleteAll") {
+            req.on("end", () => {
+                //body = JSON.parse(body);
+                for (let invite in invites) {
+                    delete invite;
+                }
+                cards = 10;
+                res.end(JSON.stringify(invites));
             });
         }
 
