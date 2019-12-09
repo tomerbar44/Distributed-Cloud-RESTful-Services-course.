@@ -8,7 +8,6 @@ const addInvitation = (req, res) => {
     });
     req.on("end", () => {
         body = JSON.parse(body);
-        console.log("handler:", body);
         const newInvite = invites.getInvitation(body, logger);
         if (newInvite) {
             res.writeHeader(200);
