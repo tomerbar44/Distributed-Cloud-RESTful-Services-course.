@@ -1,12 +1,10 @@
 [{
         "id": 305171159,
-        "name": "Tomer",
         "isAdmin": "true"
 
     },
     {
-        "id": 325141559,
-        "name": "Noy",
+        "id": 123456782,
         "isAdmin": "false"
     }
 ]

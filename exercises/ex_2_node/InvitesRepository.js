@@ -1,5 +1,6 @@
 const { EventEmitter } = require('events');
 const usersJson = require('./data/users.json');
+const Moment = require('moment')
 
 
 class InvitesRepository extends EventEmitter {
@@ -9,11 +10,10 @@ class InvitesRepository extends EventEmitter {
         this._numOfCards = 10;
         this._invitesObjects = {};
     }
-
     getInvitation(body, logger) {
         const newInvite = {
-            inviteID: Date.now(),
-            moment: new Date(),
+            inviteID: Date.now(), //Random number
+            moment: new Moment().format(),
             userID: body.id,
             name: body.name,
             cards: body.cards
@@ -21,44 +21,43 @@ class InvitesRepository extends EventEmitter {
         this._numOfCards -= newInvite.cards;
         if (this._numOfCards >= 0) {
             this._invitesObjects[newInvite.inviteID] = newInvite;
-            this.emit("addInvite", newInvite.inviteID, newInvite.moment, newInvite.userID, newInvite.name, newInvite.cards, logger); // Fire event
-            return newInvite;
+            this.emit("addInvite", newInvite.inviteID, newInvite.moment, newInvite.userID, newInvite.name, newInvite.cards, logger);
+            return 1;
         } else {
-            this.numOfCards += newInvite.cards;
+            this._numOfCards += newInvite.cards;
             this.emit("noMoreCards", logger);
-            return -1;
+            return 0;
         }
     }
     getAll(id, logger) {
         for (let user of this._users) {
             if (user.id == id) {
                 if (user.isAdmin == "true") {
-                    this.emit("getAll", logger); // Fire event
+                    this.emit("getAll", logger);
                     return this._invitesObjects;
                 } else {
                     this.emit("accessBlocked", id, logger);
-                    return -1;
+                    return 0;
                 }
             }
         }
         this.emit("userIsNotExist", id, logger);
-        return -1;
+        return 0;
     }
-
     getLog(id, logger) {
         for (let user of this._users) {
             if (user.id == id) {
                 if (user.isAdmin == "true") {
-                    //this.emit("getAll", logger); // Fire event
+                    this.emit("getLog", logger);
                     return logger.getLogFile();
                 } else {
                     this.emit("accessBlocked", id, logger);
-                    return -1;
+                    return 0;
                 }
             }
         }
         this.emit("userIsNotExist", user.id, logger);
-        return -1;
+        return 0;
     }
     deleteAll(id, logger) {
         for (let user of this._users) {
@@ -70,14 +69,13 @@ class InvitesRepository extends EventEmitter {
                     return 1;
                 } else {
                     this.emit("accessBlocked", id, logger);
-                    return -1;
+                    return 0;
                 }
             }
         }
         this.emit("userIsNotExist", id, logger);
-        return -1;
+        return 0;
     }
-
     deleteOne(inviteID, logger) {
         if (this._invitesObjects[inviteID] != null) {
             this._numOfCards += this._invitesObjects[inviteID].cards;
@@ -86,115 +84,81 @@ class InvitesRepository extends EventEmitter {
             return 1;
         } else {
             this.emit("inviteIsNotExist", inviteID, logger);
-            return -1;
+            return 0;
         }
-
     }
     updateInvitation(body, inviteID, logger) {
         if (this._invitesObjects[inviteID] != null) {
-            const inviteBefore = this._invitesObjects[inviteID]
-            this._numOfCards += this._invitesObjects[inviteID].cards;
-            this._numOfCards -= body.cards;
-            if (this._numOfCards >= 0) {
-                this._invitesObjects[inviteID].cards = body.cards;
-                this._invitesObjects[inviteID].name = body.name;
-                this._invitesObjects[inviteID].moment = new Date();
-                this.emit("updateInvitation", inviteID, inviteBefore.cards, inviteBefore.name, inviteBefore.moment, body.cards, body.name, this._invitesObjects[inviteID].moment, logger);
-                return this._invitesObjects[inviteID];
+            if (body.id == this._invitesObjects[inviteID].userID) {
+                this._numOfCards += this._invitesObjects[inviteID].cards;
+                this._numOfCards -= body.cards;
+                if (this._numOfCards >= 0) {
+                    this._invitesObjects[inviteID].cards = body.cards;
+                    this._invitesObjects[inviteID].name = body.name;
+                    this.emit("updateInvitation", inviteID, body.cards, body.name, logger);
+                    return 1
+                } else {
+                    this._numOfCards += body.cards;
+                    this._numOfCards -= this._invitesObjects[inviteID].cards;
+                    this.emit("notEnoughCards", inviteID, this._invitesObjects[inviteID].cards, body.cards, logger);
+                    return 0;
+                }
             } else {
-                this._numOfCards += body.cards;
-                this._numOfCards -= this._invitesObjects[inviteID].cards;
-                this.emit("notEnoughCards", inviteID, this._invitesObjects[inviteID].cards, body.cards, logger);
-                return -1;
+                this.emit("userIsNotExist", body.id, logger);
+                return 0;
             }
         } else {
             this.emit("inviteIsNotExist", inviteID, logger);
-            return -1;
+            return 0;
         }
-
     }
-
 }
 
 module.exports = () => {
     const InvitesRepo = new InvitesRepository()
         .on('addInvite', (inviteID, moment, userID, name, cards, logger) => {
-            console.log('*add invite fired*')
-            logger.write(`Reservation ${inviteID} included ${cards} cards added in ${moment} by ( ${userID}, ${name} )`)
-        })
-        .on('getAll', (logger) => {
-            console.log('*get all fired*')
-            logger.write('Admin asked for all cards')
-        })
-        .on('deleteAll', (logger) => {
-            console.log('*delete all tickets fired*')
-            logger.write('Admin deleted all reservations')
-        })
-        .on('deleteOne', (inviteID, logger) => {
-            console.log('*delete one ticket fired*')
-            logger.write(`Reservation ${inviteID} has beed deleted`)
-        })
-        .on('updateInvitation', (inviteID, cardsBefore, nameBefore, momentBefore, cardsAfter, nameAfter, dateAfter, logger) => {
-            console.log('*update invitation fired*')
-            logger.write(`Reservation ${inviteID} has been changed from name: ${nameBefore} to ${nameAfter}, cards: ${cardsBefore} to ${cardsAfter}, date:${momentBefore} to ${dateAfter} `)
+            console.log('-- Add invite fired --');
+            logger.write(`Invitation ${inviteID} of ${cards} cards added in ${moment} by ( ${userID}, ${name} )`);
         })
         .on('noMoreCards', (logger) => {
-            console.log('*no more tickets fired*')
-            logger.write('There is not enough tickets.')
+            console.log('-- No more tickets fired --');
+            logger.write('Adding invitation failed because tickets were running out');
         })
-        .on('notEnoughCards', (id, cardBefore, cardAfter, logger) => {
-            console.log('*not enough tickets fired*')
-            logger.write(`Reservation id: ${id} cant update amount from ${cardBefore} to ${cardAfter} because there is not enough tickets`)
+        .on('getAll', (logger) => {
+            console.log('-- Get all fired --');
+            logger.write('Admin asked for all cards');
+        })
+        .on('getLog', (logger) => {
+            console.log('-- Get log fired --');
+            logger.write('Admin asked for get log file');
         })
         .on('accessBlocked', (id, logger) => {
-            console.log('*Access blocked fired*')
-            logger.write(`Access blocked for user id: ${id}`)
+            console.log('-- Access blocked fired --');
+            logger.write(`Access blocked for user id: ${id}`);
         })
         .on('userIsNotExist', (id, logger) => {
-            console.log('*User is not exist fired*')
-            logger.write(`User id: ${id} is not exist`)
+            console.log('-- User is not exist fired --');
+            logger.write(`User id: ${id} is not exist/suitable`);
         })
-        .on('inviteIsNotExist', (id, logger) => {
-            console.log('*Invitation is not exist fired*')
-            logger.write(`Reservation: ${id} is not exist`)
+        .on('deleteAll', (logger) => {
+            console.log('-- Delete all tickets fired --');
+            logger.write('Admin deleted all invitations');
+        })
+        .on('deleteOne', (inviteID, logger) => {
+            console.log('-- Delete one ticket fired --');
+            logger.write(`Invitation ${inviteID} has beed deleted`);
+        })
+        .on('updateInvitation', (inviteID, cardsAfter, nameAfter, logger) => {
+            console.log('-- Update invitation fired --');
+            logger.write(`Invitation: ${inviteID} has been changed, name: ${nameAfter}, cards: ${cardsAfter}`);
+        })
+        .on('notEnoughCards', (id, cardBefore, cardAfter, logger) => {
+            console.log('-- Not enough tickets fired --');
+            logger.write(`Invitation: ${id} cant update amount from ${cardBefore} to ${cardAfter} because there is not enough tickets`);
+        })
+        .on('inviteIsNotExist', (inviteID, logger) => {
+            console.log('-- Invitation is not exist fired --');
+            logger.write(`Invitation: ${inviteID} is not exist`);
         })
     return InvitesRepo;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const InvitesRepo = new InvitesRepository();
-// const InvitesRepo = (new InvitesRepository())
-// .on('addInvite', (inviteID, moment, userID, name, cards, logger) => {
-//     console.log('*add ticket fired*')
-//     logger.write(`Invitation ${newInvite.inviteID} included ${newInvite.cards} added in ${newInvite.moment} by ${newInvite.userID}, ${newInvite.name}`)
-//   });
-
-
-
-
-// .on('addInvite', data => console.log(`Invitation added: ${data}`, logger.write(`Invitation ${data.inviteID} included ${data.cards} added in ${data.moment} by ${data.userID}, ${data.name}`))); // Catch event
-
-// const InvitesRepo = new InvitesRepository();
-// module.exports = InvitesRepo;
-
-
-// getSong(id) {
-//     this.emit("singleSong", this._songs[id - 1]); // Fire event
-
-//     return this._songs[id - 1];
-// }
-
-
-// const songsRepo = (new SongsRepository())
-//     .on('singleSong', data => console.log(`Get single song: ${data.song}`)); // Catch event
