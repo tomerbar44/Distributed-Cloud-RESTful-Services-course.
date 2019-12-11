@@ -9,27 +9,33 @@ module.exports = (req, res) => {
         case 'POST':
             if (urlObject.path == '/addInvite') {
                 addInvitation(req, res);
+            } else {
+                sendtoLog(req, res);
             }
             break;
         case 'GET':
             if (urlObject.path.startsWith('/getAllInvites')) {
                 getAll(req, res);
-            }
-            if (urlObject.path.startsWith('/getLogFile')) {
+            } else if (urlObject.path.startsWith('/getLogFile')) {
                 getLog(req, res);
+            } else {
+                sendtoLog(req, res);
             }
             break;
         case 'DELETE':
             if (urlObject.path.startsWith('/deleteAllInvites')) {
                 deleteAll(req, res);
-            }
-            if (urlObject.path.startsWith('/deleteInvite')) {
+            } else if (urlObject.path.startsWith('/deleteInvite')) {
                 deleteOne(req, res);
+            } else {
+                sendtoLog(req, res);
             }
             break;
         case 'PUT':
             if (urlObject.path.startsWith('/updateInvite')) {
                 updateInvitation(req, res);
+            } else {
+                sendtoLog(req, res);
             }
             break;
         default:

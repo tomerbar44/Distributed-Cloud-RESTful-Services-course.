@@ -1,13 +1,11 @@
 const { EventEmitter } = require('events');
 const usersJson = require('./data/users.json');
-const Moment = require('moment')
-
-
+const Moment = require('moment');
 class InvitesRepository extends EventEmitter {
     constructor() {
         super();
         this._users = usersJson;
-        this._numOfCards = 10;
+        this._numOfCards = 10; //Limit of cards
         this._invitesObjects = {};
     }
     getInvitation(body, logger) {
@@ -20,7 +18,7 @@ class InvitesRepository extends EventEmitter {
         };
         this._numOfCards -= newInvite.cards;
         if (this._numOfCards >= 0) {
-            this._invitesObjects[newInvite.inviteID] = newInvite;
+            this._invitesObjects[newInvite.inviteID] = newInvite; //Insert to invitesObjects with inviteID key
             this.emit("addInvite", newInvite.inviteID, newInvite.moment, newInvite.userID, newInvite.name, newInvite.cards, logger);
             return 1;
         } else {
@@ -79,7 +77,7 @@ class InvitesRepository extends EventEmitter {
     deleteOne(inviteID, logger) {
         if (this._invitesObjects[inviteID] != null) {
             this._numOfCards += this._invitesObjects[inviteID].cards;
-            delete this._invitesObjects[inviteID];
+            delete this._invitesObjects[inviteID]; //Delete from invitesObjects with inviteID key 
             this.emit("deleteOne", inviteID, logger);
             return 1;
         } else {
@@ -113,7 +111,7 @@ class InvitesRepository extends EventEmitter {
         }
     }
 }
-
+//Catch the fire events
 module.exports = () => {
     const InvitesRepo = new InvitesRepository()
         .on('addInvite', (inviteID, moment, userID, name, cards, logger) => {

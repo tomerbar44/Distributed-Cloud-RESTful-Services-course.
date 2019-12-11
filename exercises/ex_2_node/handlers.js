@@ -1,4 +1,4 @@
-var israeliIdValidator = require("israeli-id-validator")
+var israeliIdValidator = require("israeli-id-validator");
 const invites = require('./InvitesRepository')();
 const logger = require('./logger')();
 const addInvitation = (req, res) => {
@@ -16,7 +16,7 @@ const addInvitation = (req, res) => {
                 res.end("Success");
             } else {
                 res.writeHeader(409);
-                res.end(JSON.stringify("Failed"));
+                res.end("Failed");
             }
         } else {
             logger.write("Invalid data entry for add invitation");
