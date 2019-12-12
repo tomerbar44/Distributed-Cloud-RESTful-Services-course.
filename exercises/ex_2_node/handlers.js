@@ -9,7 +9,7 @@ const addInvitation = (req, res) => {
     req.on("end", () => {
         body = JSON.parse(body);
         // Validate the body
-        if (israeliIdValidator(body.id) && body.cards > 0 && body.name != "") {
+        if (israeliIdValidator(body.id) && body.cards > 0 && body.name != "" && body.name != undefined) {
             const resultOfAction = invites.getInvitation(body, logger);
             if (resultOfAction) {
                 res.writeHeader(201);
@@ -87,7 +87,7 @@ const updateInvitation = (req, res) => {
         });
         req.on("end", () => {
             body = JSON.parse(body);
-            if (israeliIdValidator(body.id) && body.cards > 0 && body.name != "") {
+            if (israeliIdValidator(body.id) && body.cards > 0 && body.name != "" && body.name != undefined) {
                 const resultOfAction = invites.updateInvitation(body, inviteID, logger);
                 if (resultOfAction) {
                     res.writeHeader(200);
