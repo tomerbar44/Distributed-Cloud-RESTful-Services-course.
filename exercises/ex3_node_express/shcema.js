@@ -29,14 +29,14 @@ const mailSchema = new Schema({
         required: true
     },
     sender: {
-        // useridk: { type: Number, required: true },
+        useridk: { type: Number, required: true },
         name: { type: String, required: true },
         phone: { type: Number, required: true },
         country: { type: String, required: true },
         zipcode: { type: String, required: true }
     },
     recipient: {
-        // useridk: { type: Number, required: true },
+        useridk: { type: Number, required: true },
         name: { type: String, required: true },
         phone: { type: Number, required: true },
         country: { type: String, required: true },
@@ -54,49 +54,3 @@ const mailSchema = new Schema({
 const mailModel = model('mailposts', mailSchema);
 // const examplap = model('mailposts', exampla);
 module.exports = mailModel;
-
-// module.exports = examplap;
-// const Coacher = model('coacher', coacherSchema, 'coachers');
-// module.exports = Coacher;
-
-
-// const { Schema, model } = require('mongoose')
-
-// const coacherSchema = new Schema({
-//     id: {
-//         type: Number,
-//         required: true
-//     },
-//     coachName: {
-//         type: String,
-//         required: true
-//     },
-//     teamName: {
-//         type: String,
-//         required: true
-//     },
-//     won: {
-//         type: Number,
-//         required: true
-//     },
-//     lost: {
-//         type: Number,
-//         required: true
-//     }
-// });
-
-// coacherSchema.statics.isExist = async function(id) {
-//     return this.find({ id: id }, (err, arr) => {
-//         if (err) { throw err; }
-//     });
-// }
-// coacherSchema.statics.getAll = async function() {
-//     return this.find({}, (err) => {
-//         if (err) { throw err; }
-//     });
-// }
-
-
-
-// const Coacher = model('coacher', coacherSchema, 'coachers');
-// module.exports = Coacher;
