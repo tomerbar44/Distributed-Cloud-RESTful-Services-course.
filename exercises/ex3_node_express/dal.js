@@ -29,12 +29,9 @@ function findOneMail(mailId) {
 
 // create 
 function insertNewMail(body) {
-    console.log("id", body.id);
-    if (body.id == undefined) {
-        body.id = Date.now();
-    }
+    body.mailID = Date.now();
     console.log("send:", body.datesent);
-    console.log("id", body.id);
+    console.log("id", body.mailID);
     return model.create(body, function(err, data) {
         if (err) {
             throw err;

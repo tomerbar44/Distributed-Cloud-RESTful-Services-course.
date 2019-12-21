@@ -1,10 +1,8 @@
 const { Schema, model } = require('mongoose');
 
 const mailSchema = new Schema({
-    id: {
-        type: Number,
-        unique: true,
-        index: true
+    mailID: {
+        type: Number
     },
     title: {
         type: String,
@@ -21,22 +19,21 @@ const mailSchema = new Schema({
         type: Date
     },
     status: {
-        type: String,
-        required: true
+        type: String
     },
     weight: {
         type: Number,
         required: true
     },
     sender: {
-        useridk: { type: Number, required: true },
+        userid: { type: Number, required: true },
         name: { type: String, required: true },
         phone: { type: Number, required: true },
         country: { type: String, required: true },
         zipcode: { type: String, required: true }
     },
     recipient: {
-        useridk: { type: Number, required: true },
+        userid: { type: Number, required: true },
         name: { type: String, required: true },
         phone: { type: Number, required: true },
         country: { type: String, required: true },
