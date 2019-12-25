@@ -29,7 +29,12 @@ router.delete('/deleteMail', (req, res) => {
     mailController.deleteMail(req, res);
 });
 
+// defult route 
 router.all('*', (req, res) => {
-    res.status(404).send('Wrong route!');
+    res.status(404).json({
+        err: "Wrong route",
+        action: "Unknown",
+        data: null
+    })
 });
 module.exports = router;

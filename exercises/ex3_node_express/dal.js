@@ -33,6 +33,7 @@ function findAllMails() {
         }
     });
 }
+
 // read mail by id
 function findOneMail(TrackingNumber) {
     return model.find({ TrackingNumber: TrackingNumber }, function(err) {
@@ -41,23 +42,15 @@ function findOneMail(TrackingNumber) {
         }
     });
 }
+
 // update by tracking number and if status=send, change status to received and create received date by date now
-function updateStatus(TrackingNumber) {
-    return model.findOneAndUpdate({ TrackingNumber: TrackingNumber, status: "send" }, { $set: { status: "received", receiveddate: Date.now() } }, { new: true }, (err, data) => {
-        if (err) {
-            throw err;
-        }
-        console.log("before update data", data)
-        return data
-    });
+async function updateStatus(TrackingNumber) {
+    return await model.findOneAndUpdate({ TrackingNumber: TrackingNumber, status: "send" }, { $set: { status: "received", receiveddate: Date.now() } }, { new: true });
 }
+
 // delete by tracking number and if status=received
-function deleteMailFromDb(TrackingNumber) {
-    return model.findOneAndDelete({ TrackingNumber: TrackingNumber, status: "received" }, (err) => {
-        if (err) {
-            throw err;
-        }
-    });
+async function deleteMailFromDb(TrackingNumber) {
+    return await model.findOneAndDelete({ TrackingNumber: TrackingNumber, status: "received" });
 }
 module.exports = {
     findAllMails,
