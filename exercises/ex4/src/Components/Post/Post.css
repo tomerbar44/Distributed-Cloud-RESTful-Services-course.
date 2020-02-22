@@ -1,0 +1,29 @@
+.Post {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.Post .title {
+  display: inline;
+  font-size: 16px;
+  line-height: 19px;
+  font-family: Roboto;
+}
+
+.Post button {
+  width: 35px;
+  height: 35px;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+.Post .deleteButton {
+  color: #fd5842;
+}
+
+.Post .editButton {
+  color: #ffffff;
+}
+.Post .buttonsArea {
+  padding-left: 260px;
+}

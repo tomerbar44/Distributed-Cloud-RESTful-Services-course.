@@ -3,7 +3,7 @@ const dal = require('./dal')
 async function getAll(req, res) {
     try {
         const data = await dal.findAllMails();
-        if (data == "") {
+        if (data.length == 0) {
             res.status(200).json({
                 err: null,
                 action: "Read",
